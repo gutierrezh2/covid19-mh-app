@@ -1,0 +1,28 @@
+body {
+    text-align: center;
+}
+
+div {
+    margin: 20px;
+    border: 50px solid green;
+    padding: 100px;
+    width: 50%; /* make relative */
+}
+
+p {
+    text-align: center;
+    font-family: sans-serif;
+}
+
+button {
+    background-color: rgb(102, 115, 162);
+    color: #ffffff;
+}
+
+.grid-container {
+    display: inline-block;
+    grid-template-columns: 80px;
+    grid-template-rows: 80px;
+    grid-gap: 10px 10px;
+    border: solid;
+  }

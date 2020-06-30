@@ -1,7 +1,9 @@
-<div class="grid-container">
-    <h1>{{questions[0].question}}</h1>
-
-    <!--[(ngModel)]="questions[0].options[0].answer"-->
+<div class="container">
+  <div class="grid-container">
+    
+    <div class="item-1"><h2>{{questions[0].question}}</h2></div>
+    <div class="item-2">
+    
     <!--
     <input type="radio" id="great" name="mood" value="Really Great">
     <label for ="great">{{questions[0].options[0].answer}}</label><br>
@@ -18,12 +20,17 @@
     <input type="radio" id="terrible" name="mood" value="Really Terrible">
     <label for ="terrible">{{questions[0].options[4].answer}}</label><br>-->
 
-    <div class="radio" *ngFor="let question[0] of questions">
-      <label>
-        <input type="radio" id="great" name="mood" value="Really Great"><br>
-      </label>
+      <div *ngFor="let options of questions[0].options">
+          <input type="radio">
+          <label for ="great">{{options.answer}}</label><br><br>
+      </div>
+
     </div>
-  
-    <button>Back</button>
-    <button>Next</button>
+
+    <div class="item-3">
+      <button id=button-back>Back</button>
+      <button id=button-next>Next</button>
+    </div>
+
   </div>
+</div>

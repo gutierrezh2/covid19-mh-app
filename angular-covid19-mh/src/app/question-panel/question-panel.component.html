@@ -1,1 +1,29 @@
-<p>question-panel works!</p>
+<div class="grid-container">
+    <h1>{{questions[0].question}}</h1>
+
+    <!--[(ngModel)]="questions[0].options[0].answer"-->
+    <!--
+    <input type="radio" id="great" name="mood" value="Really Great">
+    <label for ="great">{{questions[0].options[0].answer}}</label><br>
+  
+    <input type="radio" id="good" name="mood" value="Good">
+    <label for ="good">{{questions[0].options[1].answer}}</label><br>
+  
+    <input type="radio" id="okay" name="mood" value="Okay">
+    <label for ="okay">{{questions[0].options[2].answer}}</label><br>
+  
+    <input type="radio" id="bad" name="mood" value="Bad">
+    <label for ="bad">{{questions[0].options[3].answer}}</label><br>
+  
+    <input type="radio" id="terrible" name="mood" value="Really Terrible">
+    <label for ="terrible">{{questions[0].options[4].answer}}</label><br>-->
+
+    <div class="radio" *ngFor="let question[0] of questions">
+      <label>
+        <input type="radio" id="great" name="mood" value="Really Great"><br>
+      </label>
+    </div>
+  
+    <button>Back</button>
+    <button>Next</button>
+  </div>

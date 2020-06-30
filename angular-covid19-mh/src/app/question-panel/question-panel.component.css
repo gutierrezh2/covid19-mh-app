@@ -1,0 +1,11 @@
+* {
+    font-family: sans-serif
+}
+
+.grid-container {
+    display: inline-block;
+    grid-template-columns: 80px;
+    grid-template-rows: 80px;
+    grid-gap: 10px 10px;
+    border: solid;
+}

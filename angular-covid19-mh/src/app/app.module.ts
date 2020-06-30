@@ -1,11 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+// Imports for Components
 import { AppComponent } from './app.component';
 import { BasePanelComponent } from './base-panel/base-panel.component';
 import { StartPanelComponent } from './start-panel/start-panel.component';
 import { QuestionPanelComponent } from './question-panel/question-panel.component';
 import { SuggestionPanelComponent } from './suggestion-panel/suggestion-panel.component';
+
+import { FormsModule } from '@angular/forms'; // NgModel lives here
 
 @NgModule({
   declarations: [
@@ -16,7 +19,8 @@ import { SuggestionPanelComponent } from './suggestion-panel/suggestion-panel.co
     SuggestionPanelComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

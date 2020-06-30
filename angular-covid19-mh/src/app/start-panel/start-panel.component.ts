@@ -13,3 +13,15 @@ export class StartPanelComponent implements OnInit {
   }
 
 }
+
+/*
+@Component({
+  selector: 'app-start-panel',
+  templateUrl: './start-panel.component.html',
+  styleUrls: ['./start-panel.component.css']
+})
+export class StartPanelComponent extends BasePanelComponent {
+
+  ngOnInit(): void {
+  }
+}*/

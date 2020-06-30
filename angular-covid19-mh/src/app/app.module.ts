@@ -8,7 +8,8 @@ import { StartPanelComponent } from './start-panel/start-panel.component';
 import { QuestionPanelComponent } from './question-panel/question-panel.component';
 import { SuggestionPanelComponent } from './suggestion-panel/suggestion-panel.component';
 
-import { FormsModule } from '@angular/forms'; // NgModel lives here
+import { FormsModule } from '@angular/forms';
+import { AppRoutingModule } from './app-routing.module'; // NgModel lives here
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { FormsModule } from '@angular/forms'; // NgModel lives here
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

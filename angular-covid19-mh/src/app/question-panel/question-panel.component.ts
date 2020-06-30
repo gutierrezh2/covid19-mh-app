@@ -3,6 +3,7 @@ import { Question } from '../question';
 import { Answer } from '../answer';
 import { QUESTIONS } from '../mock-db';
 import { BasePanelComponent } from '../base-panel/base-panel.component';
+import { MHC19ApiService } from '../mhc19api.service'; // web api
 
 @Component({
   selector: 'app-question-panel',
@@ -26,10 +27,15 @@ export class QuestionPanelComponent implements OnInit {
 
   questions = QUESTIONS;
 
-  constructor() { 
+  constructor(private mhc19ApiService : MHC19ApiService) { 
   }
 
   ngOnInit(): void {
+    /*this.getHeroes();*/
   }
 
+  // Add method to getQuestion
+  /*getHeroes(): void {
+    this.heroes = this.heroService.getHeroes();
+  }*/
 }

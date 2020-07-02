@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+import { MHC19ApiService } from '../mhc19api.service'; // web api
+import { Question } from '../question';
+
 @Component({
   selector: 'app-start-panel',
   templateUrl: './start-panel.component.html',
@@ -7,9 +10,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StartPanelComponent implements OnInit {
 
-  constructor() { }
+  //constructor() { }
+  public questions: Array<Question>;
+
+  constructor(private mhc19ApiService : MHC19ApiService) {
+  }
 
   ngOnInit(): void {
+    this.mhc19ApiService.get().subscribe((data: any) => this.questions = data);
   }
 
 }

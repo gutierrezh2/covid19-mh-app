@@ -9,7 +9,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class MHC19ApiService {
 
   private headers: HttpHeaders;
-  private accessPointUrl: string = 'http://localhost:5001/api/QuestionItems';
+  private accessPointUrl: string = 'https://localhost:5001/api/QuestionItems';
 
   constructor (private http: HttpClient) { 
     this.headers = new HttpHeaders({'Content-Type': 'application/json; charset=utf-8'});
@@ -32,8 +32,4 @@ export class MHC19ApiService {
       return this.http.put(this.accessPointUrl + '/' + payload.id, payload, {headers: this.headers});
   }
 
-  // Add getQuestion method here
-  /*getHeroes(): void {
-    this.heroes = this.heroService.getHeroes();
-  }*/
 }

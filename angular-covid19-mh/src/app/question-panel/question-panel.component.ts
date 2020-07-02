@@ -25,9 +25,11 @@ export class QuestionPanelComponent extends BasePanelComponent implements OnInit
 }*/
 export class QuestionPanelComponent implements OnInit {
 
-  questions = QUESTIONS;
+  //questions = QUESTIONS;
+  public questions: Array<Question>;
 
-  constructor(private mhc19ApiService : MHC19ApiService) { 
+  constructor(private mhc19ApiService : MHC19ApiService) {
+    mhc19ApiService.get().subscribe((data: any) => this.questions = data);
   }
 
   ngOnInit(): void {

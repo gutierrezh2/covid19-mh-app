@@ -11,6 +11,10 @@ import { SuggestionPanelComponent } from './suggestion-panel/suggestion-panel.co
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module'; // NgModel lives here
 
+import { MHC19ApiService } from './mhc19api.service'; //*
+import { HttpClientModule } from '@angular/common/http';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,11 +24,14 @@ import { AppRoutingModule } from './app-routing.module'; // NgModel lives here
     SuggestionPanelComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     FormsModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    MHC19ApiService //*
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

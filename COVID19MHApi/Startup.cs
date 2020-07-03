@@ -36,7 +36,7 @@ namespace COVID19MHApi
             services.AddDbContext<QuestionContext>(opt =>
                opt.UseInMemoryDatabase("QuestionsList"));
             //services.AddMvc();
-            
+
             /* Enable CORS */
             services.AddCors(options => { 
                 options.AddPolicy("CorsPolicy",
@@ -49,7 +49,8 @@ namespace COVID19MHApi
             services.AddControllers()
                 .AddNewtonsoftJson(options =>
                 {
-                    options.SerializerSettings.ContractResolver = new DefaultContractResolver();
+                    //options.UseMemberCasing();
+                    //options.SerializerSettings.ContractResolver = new DefaultContractResolver();
                 });
             
         }

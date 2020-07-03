@@ -5,6 +5,9 @@ using COVID19MHApi.Models;
 using System;
 using System.Linq;
 
+using System.Text.Json;
+using System.Text.Json.Serialization;
+
 // References: https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-mvc-app/working-with-sql?view=aspnetcore-3.0&tabs=visual-studio, https://exceptionnotfound.net/ef-core-inmemory-asp-net-core-store-database/
 
 public class QuestionsDB {
@@ -31,8 +34,11 @@ public class QuestionsDB {
                         new AnswerItem(3, "Okay", 2),
                         new AnswerItem(4, "Bad", 3),
                         new AnswerItem(5, "Really terrible", 4)}
-                    },
-                    SelectedAnswer = null,*/
+                    },*/
+                    SelectedAnswer = new AnswerItem() {
+                        Id = 1,
+                        Answer = "Really great",
+                        Score = 0 },
                     IsSelected = false
                 });
 

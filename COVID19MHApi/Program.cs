@@ -32,11 +32,11 @@ namespace COVID19MHApi
 
             //2. Find the service layer within our scope.
             using (var scope = host.Services.CreateScope()) {
-                //3. Get the instance of BoardGamesDBContext in our services layer
+                //3. Get the instance of QuestionContext in our services layer
                 var services = scope.ServiceProvider;
                 var context = services.GetRequiredService<QuestionContext>();
 
-                //4. Call the DataGenerator to create sample data
+                //4. Call the QuestionsDB to create sample data
                 QuestionsDB.Initialize(services);
             }
 

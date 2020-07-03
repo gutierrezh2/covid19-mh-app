@@ -11,8 +11,12 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 //using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
+//using System.Collections.Generic;
 using COVID19MHApi.Models;
+
+using Newtonsoft.Json.Serialization;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace COVID19MHApi
 {
@@ -32,7 +36,7 @@ namespace COVID19MHApi
             services.AddDbContext<QuestionContext>(opt =>
                opt.UseInMemoryDatabase("QuestionsList"));
             //services.AddMvc();
-
+            
             /* Enable CORS */
             services.AddCors(options => { 
                 options.AddPolicy("CorsPolicy",
@@ -42,7 +46,11 @@ namespace COVID19MHApi
                     //.AllowCredentials());
             });
 
-            services.AddControllers();
+            services.AddControllers()
+                .AddNewtonsoftJson(options =>
+                {
+                    options.SerializerSettings.ContractResolver = new DefaultContractResolver();
+                });
             
         }
 

@@ -129,3 +129,6 @@ C:\Users\hguti\Documents\GitHub\covid19-mh-app\COVID19MHApi\obj\Debug\netcoreapp
 C:\Users\hguti\Documents\GitHub\covid19-mh-app\COVID19MHApi\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.Configuration.dll
 C:\Users\hguti\Documents\GitHub\covid19-mh-app\COVID19MHApi\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.Console.dll
 C:\Users\hguti\Documents\GitHub\covid19-mh-app\COVID19MHApi\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Options.ConfigurationExtensions.dll
+C:\Users\hguti\Documents\GitHub\covid19-mh-app\COVID19MHApi\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\hguti\Documents\GitHub\covid19-mh-app\COVID19MHApi\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\hguti\Documents\GitHub\covid19-mh-app\COVID19MHApi\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll

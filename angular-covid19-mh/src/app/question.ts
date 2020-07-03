@@ -4,6 +4,6 @@ export interface Question {
     id: number;
     question: string;
     //options: Answer[];
-    //answer: Answer;
+    selectedAnswer: Answer;
     isSelected: boolean;
 }

@@ -28,7 +28,9 @@ namespace COVID19MHApi.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<QuestionItem>>> GetQuestionItems()
         {
-            return await _context.QuestionItems.ToListAsync();
+            return await _context.QuestionItems
+                .Include( q => q.SelectedAnswer)
+                .ToListAsync();
         }
 
         // GET: api/QuestionItems/5

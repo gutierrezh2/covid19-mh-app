@@ -26,21 +26,43 @@ public class QuestionsDB {
                 new QuestionItem() {
                     Id = 1,
                     Question = "How are you right now?",
-                    /*Options = new AnswerSetItem() {
+                    Options = new AnswerSetItem() {
                         Id = 1,
-                        AnswerSet = new List<AnswerItem> {
-                        new AnswerItem(1, "Really great", 0),
-                        new AnswerItem(2, "Good", 1),
-                        new AnswerItem(3, "Okay", 2),
-                        new AnswerItem(4, "Bad", 3),
-                        new AnswerItem(5, "Really terrible", 4)}
-                    },*/
+                        AnswerSet = new List<AnswerItem>() {
+                        new AnswerItem() { Id = 1, Answer = "Really great", Score = 0 },
+                        new AnswerItem() { Id = 2, Answer = "Good", Score = 1 },
+                        new AnswerItem() { Id = 3, Answer = "Okay", Score = 2 },
+                        new AnswerItem() { Id = 4, Answer = "Bad", Score = 3 },
+                        new AnswerItem() { Id = 5, Answer = "Really terrible", Score = 4 }
+                        }
+                    },
                     SelectedAnswer = new AnswerItem() {
                         Id = 1,
                         Answer = "Really great",
                         Score = 0 },
                     IsSelected = false
-                });
+                },
+
+                new QuestionItem() {
+                    Id = 2,
+                    Question = "How much has your mood dropped or negatively changed (ex. more stressed) since COVID-19 started?",
+                    Options = new AnswerSetItem() {
+                        Id = 2,
+                        AnswerSet = new List<AnswerItem>() {
+                        new AnswerItem() { Id = 6, Answer = "Not at all", Score = 0 },
+                        new AnswerItem() { Id = 7, Answer = "A little", Score = 1 },
+                        new AnswerItem() { Id = 8, Answer = "Somewhat", Score = 2 },
+                        new AnswerItem() { Id = 9, Answer = "A lot", Score = 3 },
+                        }
+                    },
+                    SelectedAnswer = new AnswerItem() {
+                        Id = 6,
+                        Answer = "Not at all",
+                        Score = 0 },
+                    IsSelected = false
+                }
+
+                );
 
             context.SaveChanges();
         }

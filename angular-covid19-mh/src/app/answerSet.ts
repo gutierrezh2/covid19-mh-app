@@ -1,14 +1,11 @@
 import { Answer } from './answer';
 
-/*
-export interface Answer {
+export interface AnswerSet {
     id: number;
-    answer: string;
-    score: number;
+    answerSet: Answer[]
 }
-*/
 
-export const ANSWERS_SET1: Answer[] = [
+/*export const ANSWERS_SET1: Answer[] = [
     { id: 1, answer: "Really Great", score: 0 },
     { id: 2, answer: "Good", score: 1 },
     { id: 3, answer: "Okay", score: 2 },
@@ -34,3 +31,4 @@ export const ANSWERS_SET4: Answer[] = [
     { id: 14, answer: "No", score: 0 },
     { id: 15, answer: "Yes", score: 1 },
 ];
+*/

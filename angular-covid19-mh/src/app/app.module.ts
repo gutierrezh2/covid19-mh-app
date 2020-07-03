@@ -14,6 +14,8 @@ import { AppRoutingModule } from './app-routing.module'; // NgModel lives here
 import { MHC19ApiService } from './mhc19api.service'; //*
 import { HttpClientModule } from '@angular/common/http';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 @NgModule({
   declarations: [
@@ -27,7 +29,8 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     BrowserModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule
   ],
   providers: [
     MHC19ApiService //*

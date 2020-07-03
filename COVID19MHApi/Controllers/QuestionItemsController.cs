@@ -29,7 +29,8 @@ namespace COVID19MHApi.Controllers
         public async Task<ActionResult<IEnumerable<QuestionItem>>> GetQuestionItems()
         {
             return await _context.QuestionItems
-                .Include( q => q.SelectedAnswer)
+                .Include( q => q.Options.AnswerSet )
+                .Include( q => q.SelectedAnswer )
                 .ToListAsync();
         }
 

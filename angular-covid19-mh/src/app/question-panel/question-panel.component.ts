@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Question } from '../question';
 import { Answer } from '../answer';
-//import { QUESTIONS } from '../mock-db';
 import { BasePanelComponent } from '../base-panel/base-panel.component';
 import { MHC19ApiService } from '../mhc19api.service'; // web api
 
@@ -25,9 +24,8 @@ export class QuestionPanelComponent extends BasePanelComponent implements OnInit
 }*/
 export class QuestionPanelComponent implements OnInit {
   
-
-  //questions = QUESTIONS;
   public questions: Array<Question>;
+  //public questionId = this.questions[0].id;
 
   constructor(private mhc19ApiService : MHC19ApiService) {
   }
@@ -35,5 +33,11 @@ export class QuestionPanelComponent implements OnInit {
   ngOnInit(): void {
     this.mhc19ApiService.get().subscribe((data: any) => this.questions = data);
   }
+
+  /*calcPageNum(questionId) {
+    if questionId == 0 {
+
+    }
+  }*/
 
 }

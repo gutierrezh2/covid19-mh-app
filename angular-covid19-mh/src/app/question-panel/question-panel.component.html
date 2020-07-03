@@ -1,9 +1,7 @@
 <div class="container">
   <div class="grid-container">
     
-    <!--<div class="item-1"><h2>{{questions[0].question}}</h2></div>-->
-
-    <div class="item-1"><h2>{{questions[0].selectedAnswer.answer}}</h2></div>
+    <div class="item-1"><h2>{{questions[0].question}}</h2></div>
     <div class="item-2">
     
         <!--
@@ -22,16 +20,20 @@
         <input type="radio" id="terrible" name="mood" value="Really Terrible">
         <label for ="terrible">{{questions[0].options[4].answer}}</label><br>-->
 
-    <!--<div *ngFor="let options of questions[0].options">
-          <input type="radio">
-          <label for ="great">{{options.answer}}</label><br><br>
-    </div>-->
+    <div *ngFor="let answerSet of questions[0].options.answerSet">
+          <input type="radio" name="mood">
+          <label for ="great">{{answerSet.answer}}</label><br><br>
+    </div>
 
     </div>
 
     <div class="item-3">
-      <button id=button-back>Back</button>
-      <button id=button-next>Next</button>
+      <a routerLink="/start">
+        <button id=button-back>Back</button>
+      </a>
+      <a routerLink="/question/1">
+        <button id=button-next>Next</button>
+      </a>
     </div>
 
   </div>

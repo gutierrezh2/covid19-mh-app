@@ -3,7 +3,7 @@ using System.Collections.Generic;
 public class QuestionItem {
     public long Id { get; set; }
     public string Question { get; set; }
-    //public AnswerSetItem Options { get; set; }
+    public AnswerSetItem Options { get; set; }
     public AnswerItem SelectedAnswer { get; set; }
     public bool IsSelected { get; set; }
 

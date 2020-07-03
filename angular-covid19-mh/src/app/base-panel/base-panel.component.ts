@@ -1,7 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Question } from '../question';
-import { Answer } from '../answer';
-//import { QUESTIONS } from '../mock-db';
 
 @Component({
   selector: 'app-base-panel',
@@ -10,7 +7,7 @@ import { Answer } from '../answer';
 })
 export class BasePanelComponent implements OnInit {
 
-  //questions = QUESTIONS;
+  questionIdCount = 0;
 
   constructor() { }
 

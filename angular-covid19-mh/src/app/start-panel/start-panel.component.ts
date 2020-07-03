@@ -10,6 +10,8 @@ import { Question } from '../question';
 })
 export class StartPanelComponent implements OnInit {
 
+  questionIdCount = 1;
+
   //constructor() { }
   public questions: Array<Question>;
 

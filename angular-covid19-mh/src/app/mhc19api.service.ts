@@ -16,7 +16,6 @@ export class MHC19ApiService {
   }
 
   public get() {
-      // Get all jogging data
       return this.http.get(this.accessPointUrl, {headers: this.headers});
   }
   

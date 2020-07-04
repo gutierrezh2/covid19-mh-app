@@ -24,20 +24,37 @@ export class QuestionPanelComponent extends BasePanelComponent implements OnInit
 }*/
 export class QuestionPanelComponent implements OnInit {
   
-  public questions: Array<Question>;
-  //public questionId = this.questions[0].id;
+  questions: Array<Question>;
+  questionIndex = 0;
+  answerSelected: Answer;
+  radioSelected: any;
 
   constructor(private mhc19ApiService : MHC19ApiService) {
   }
 
   ngOnInit(): void {
-    this.mhc19ApiService.get().subscribe((data: any) => this.questions = data);
+    //this.mhc19ApiService.get().subscribe((data: any) => this.questions = data);
+    this.getQuestions();
   }
 
-  /*calcPageNum(questionId) {
-    if questionId == 0 {
+  getQuestions(): void {
+    this.mhc19ApiService.get()
+      .subscribe((data: any) => this.questions = data);
+  }
 
-    }
+  nextQuestion(questionIndex): void {
+    //get selected option from form
+    console.log(this.radioSelected);
+
+    // use update method
+    this.mhc19ApiService.update(this.questions[questionIndex].selectedAnswer);
+    
+    // change page by updating the index
+    this.questionIndex += 1;
+  }
+
+  /*prevQuestion(questionId: number): void {
+    questionIndex -= 1;
   }*/
 
 }

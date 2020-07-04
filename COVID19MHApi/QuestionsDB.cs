@@ -60,6 +60,25 @@ public class QuestionsDB {
                         Answer = "Not at all",
                         Score = 0 },
                     IsSelected = false
+                },
+
+                new QuestionItem() {
+                    Id = 3,
+                    Question = "How well have you been able to maintain your daily routine/life since COVID-19 started?",
+                    Options = new AnswerSetItem() {
+                        Id = 3,
+                        AnswerSet = new List<AnswerItem>() {
+                        new AnswerItem() { Id = 10, Answer = "Very well", Score = 0 },
+                        new AnswerItem() { Id = 11, Answer = "Somewhat well", Score = 1 },
+                        new AnswerItem() { Id = 12, Answer = "Not very well", Score = 2 },
+                        new AnswerItem() { Id = 13, Answer = "Not at all", Score = 3 },
+                        }
+                    },
+                    SelectedAnswer = new AnswerItem() {
+                        Id = 12,
+                        Answer = "Somewhat",
+                        Score = 2 },
+                    IsSelected = true
                 }
 
                 );

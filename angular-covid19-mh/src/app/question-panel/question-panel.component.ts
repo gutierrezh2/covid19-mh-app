@@ -47,13 +47,18 @@ export class QuestionPanelComponent implements OnInit {
     this.getQuestions();
     //this.getAnswers();
     //this.radioSelected = this.questions[this.qIndex].selectedAnswer.id; // set default value, if exists
-    this.setRadioValue();
+    //this.setRadioValue();
   }
 
   // allow this component to access the data pulled from API
   getQuestions(): void {
     this.questions = this.qDataService.questions;
-  }
+    /*this.mhc19ApiService.get()
+      .subscribe((data: any) => {
+        this.questions = data;
+        this.radioSelected = this.questions[this.qIndex].selectedAnswer.id; 
+      });*/
+}
 
   /*getAnswers(): void {
     this.userAnswers = this.qDataService.userAnswers;
@@ -65,7 +70,10 @@ export class QuestionPanelComponent implements OnInit {
     if (this.qDataService.userAnswers.has(this.questions[this.qIndex].id)) {
       this.radioSelected = this.qDataService.userAnswers.get(this.questions[this.qIndex].id).id;
     }
-    // else, don't set a default value (no code here)
+    // else, clear the radioSelected field
+    else {
+      this.radioSelected = null;
+    }
   }
 
   nextQuestion(qIndex): void {
@@ -74,10 +82,14 @@ export class QuestionPanelComponent implements OnInit {
 
     // update map of userAnswers (ie. remove prev. answer, replace with new one)
     this.updateUserAnswers();
-    
+        
     // change page by updating the index
     this.qIndex += 1;
     //this.radioSelected = this.questions[this.qIndex].selectedAnswer.id; // set new val?
+
+    // clear radioSelected for the next Question (the default will be set again for the next question)
+    // this.radioSelected = null;
+    this.setRadioValue();
   }
 
   gatherAnswer(): void {
@@ -90,17 +102,12 @@ export class QuestionPanelComponent implements OnInit {
         this.answerSelected = option;
       }
     });
-    //return null; // if there's no answer selected, this method will return null
-    /*return {
-      id: this.radioSelected, // id of selected radio button
-      answer: this.questions[this.qIndex].options.answerSet[this.radioSelected-1].answer,
-      score: this.questions[this.qIndex].options.answerSet[this.radioSelected-1].score
-    }*/
   }
 
   updateUserAnswers(): void {
     // if question id in map, delete value
     if (this.qDataService.userAnswers.has(this.questions[this.qIndex].id)) {
+      console.log("Here");
       this.qDataService.userAnswers.delete(this.questions[this.qIndex].id);
     }
 
@@ -152,4 +159,6 @@ export class QuestionPanelComponent implements OnInit {
     return score;
   }
 
+
+  
 }

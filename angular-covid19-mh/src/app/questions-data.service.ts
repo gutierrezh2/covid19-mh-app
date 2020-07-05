@@ -9,9 +9,6 @@ import { Subject, BehaviorSubject, Observable } from 'rxjs';
 })
 export class QuestionsDataService {
 
-  //private messageSource = new BehaviorSubject('default message');
-  //currentMessage = this.messageSource.asObservable();
-
   questions: Array<Question>;
   userAnswers: Map<number, Answer> = new Map(); // store Answer values for each question id = key
 
@@ -19,9 +16,4 @@ export class QuestionsDataService {
     this.mhc19ApiService.get().subscribe((data: any) => this.questions = data);
     // pull from suggestions in web api
   }
-
-  // getSelectedAnswers()
-
-  // doCalculation()
-
 }

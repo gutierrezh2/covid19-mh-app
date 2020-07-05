@@ -3,11 +3,10 @@
 }
 
 /* For actual container itself and its alignment */
-
-
 .container {
     display: inline-block;
-    background-color: rgb(93, 154, 152);
+    background-color: rgb(16, 95, 92);
+    color: #ffffff;
     border-radius: 5px;
 }
 
@@ -21,7 +20,6 @@
         ". main ."
         ". . ."
         ". footer ."
-        ". . ."
 }
 
 .item-1 {

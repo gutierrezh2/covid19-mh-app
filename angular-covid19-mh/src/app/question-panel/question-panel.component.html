@@ -1,7 +1,7 @@
 <div class="container">
   <div class="grid-container">
     
-    <div class="item-1"><h2>{{questions[questionIndex].question}}</h2></div>
+    <div class="item-1"><h2>{{questions[qIndex].question}}</h2></div>
     
     <div class="item-2">
         <!--
@@ -26,12 +26,31 @@
         <label for ="great">{{answerSet.answer}}</label><br><br>
       </div>-->
 
+      <!--
       <div *ngFor="let answerSet of questions[questionIndex].options.answerSet">
         <label for ="{{answerSet.answer}}">
           <input id="a-{{answerSet.answer.id}}" [value]='answerSet.id' type="radio" name="mood" [(ngModel)]="radioSelected">
           {{answerSet.answer}}
         </label><br><br>
+      </div>-->
+
+      <!--
+      <p>{{questions[qIndex].selectedAnswer.id}}</p>
+      <p>{{questions[qIndex].options.answerSet[0].id}}</p>-->
+
+      <div *ngFor="let answerSet of questions[qIndex].options.answerSet">
+        <label for ="{{answerSet.answer}}">
+          <!--<div *ngIf="answerSet.id == questions[qIndex].selectedAnswer.id">-->
+          <input id="a-{{answerSet.answer.id}}" [value]='answerSet.id' type="radio" name="mood" [(ngModel)]="radioSelected">
+          {{answerSet.answer}}
+        </label><br><br>
       </div>
+
+      <!--<p>{{radioSelected}}</p>-->
+      <!--<p>{{answerSelected}}</p>-->
+
+      <!--<p>{{answerSelected.id}}</p>-->
+
     </div>
 
     <div class="item-3">
@@ -39,14 +58,15 @@
         <button id=button-back>Back</button>
       </a>
 
-      <div *ngIf="questionIndex == (questions.length-1); else elseBlock">
-          <a routerLink="/suggestion">
-            <button id=button-next>Finish</button>
-          </a>
+      <div *ngIf="qIndex == (questions.length-1); else elseBlock">
+          <!--<a routerLink="/suggestion">
+            <button id=button-next (click)="finishButton(qIndex)">Finish</button>
+          </a>-->
+          <button id=button-next (click)="finishButton(qIndex)">Finish</button>
       </div>
 
       <ng-template #elseBlock>
-          <button id=button-next (click)="nextQuestion(questionIndex)">Next</button>
+          <button id=button-next (click)="nextQuestion(qIndex)">Next</button>
       </ng-template>
       
       <!--<a routerLink="/question:{{questionIndex}}">

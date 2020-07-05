@@ -7,9 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SuggestionPanelComponent implements OnInit {
 
+  score: number;
+
   constructor() { }
 
   ngOnInit(): void {
+    this.score = history.state.data;
+     // pull calculated score from previous page
   }
 
 }

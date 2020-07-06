@@ -35,6 +35,8 @@ namespace COVID19MHApi
             /* Registers QuestionContext for injection and use InMemory DB */
             services.AddDbContext<QuestionContext>(opt =>
                opt.UseInMemoryDatabase("QuestionsList"));
+            services.AddDbContext<SuggestionSetContext>(opt =>
+               opt.UseInMemoryDatabase("SuggestionSetList"));
             //services.AddMvc();
 
             /* Enable CORS */

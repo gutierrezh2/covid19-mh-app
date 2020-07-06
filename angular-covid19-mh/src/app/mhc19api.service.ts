@@ -10,11 +10,13 @@ export class MHC19ApiService {
 
   private headers: HttpHeaders;
   private accessPointUrl: string = 'https://localhost:5001/api/QuestionItems';
+  private suggestionsAccessPointUrl: string = 'https://localhost:5001/api/SuggestionSetItems/';
 
   constructor (private http: HttpClient) { 
     this.headers = new HttpHeaders({'Content-Type': 'application/json; charset=utf-8'});
   }
 
+  // Question
   public get() {
       return this.http.get(this.accessPointUrl, {headers: this.headers});
   }
@@ -30,5 +32,22 @@ export class MHC19ApiService {
   public update(payload) {
       return this.http.put(this.accessPointUrl + '/' + payload.id, payload, {headers: this.headers});
   }
+
+  // SuggestionSet
+  public getSuggestionSet() {
+    return this.http.get(this.suggestionsAccessPointUrl, {headers: this.headers});
+  }
+
+  public addSuggestionSet(payload) {
+    return this.http.post(this.suggestionsAccessPointUrl, payload, {headers: this.headers});
+  }
+
+  public removeSuggestionSet(payload) {
+    return this.http.delete(this.suggestionsAccessPointUrl + '/' + payload.id, {headers: this.headers});
+  }
+
+    public updateSuggestionSet(payload) {
+    return this.http.put(this.suggestionsAccessPointUrl + '/' + payload.id, payload, {headers: this.headers});
+}
 
 }

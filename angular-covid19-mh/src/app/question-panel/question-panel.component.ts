@@ -76,6 +76,23 @@ export class QuestionPanelComponent implements OnInit {
     }
   }
 
+  prevQuestion(qIndex): void {
+    //get selected option from form (in this.radioSelected) & create new answer object based on that
+    this.gatherAnswer(); // set new answerSelected
+
+    // update map of userAnswers (ie. remove prev. answer, replace with new one)
+    this.updateUserAnswers();
+        
+    // change page by updating the index
+    this.qIndex -= 1;
+    //this.radioSelected = this.questions[this.qIndex].selectedAnswer.id; // set new val?
+
+    // clear radioSelected for the next Question (the default will be set again for the next question)
+    // this.radioSelected = null;
+    this.setRadioValue();
+
+  }
+
   nextQuestion(qIndex): void {
     //get selected option from form (in this.radioSelected) & create new answer object based on that
     this.gatherAnswer(); // set new answerSelected
@@ -105,19 +122,20 @@ export class QuestionPanelComponent implements OnInit {
   }
 
   updateUserAnswers(): void {
-    // if question id in map, delete value
+    // if question id prev. in map, delete value
     if (this.qDataService.userAnswers.has(this.questions[this.qIndex].id)) {
-      console.log("Here");
       this.qDataService.userAnswers.delete(this.questions[this.qIndex].id);
     }
 
     // add new value in map if an answer was selected
     if (this.radioSelected != undefined) {
       this.qDataService.userAnswers.set(this.questions[this.qIndex].id, this.answerSelected);
-    }
 
-    console.log(this.radioSelected);
-    console.log(this.qDataService.userAnswers);
+      // if question prev. unanswered (in missedQuestions), remove it
+      /*if (this.missedQuestions.includes(this.questions[this.qIndex].id)) {
+        this.missedQuestions.splice(this.questions[this.qIndex].id, 1);
+      }*/
+    }
   }
 
   /*prevQuestion(questionId: number): void {
@@ -129,6 +147,9 @@ export class QuestionPanelComponent implements OnInit {
   finishButton(qIndex): void {
     // do work here to gather all the selected answers, pass it to whatever is doing the calculation, and pass results onto the suggestions page
 
+    // sets radioSelected if already previously set
+    this.gatherAnswer(); // set new answerSelected
+
     // add last answer of last question
     this.updateUserAnswers();
 
@@ -139,13 +160,20 @@ export class QuestionPanelComponent implements OnInit {
       }
     });
 
+    // let user know of missed questions
+    if (this.missedQuestions.length != 0) {
+      alert(`The following questions haven't been answered: ${this.missedQuestions}`);
+    }
+
     // if missedQuestions array is empty, then calculate score
     if (this.missedQuestions.length === 0) {
       var score = this.calculateScore();
-      this.router.navigate(["/suggestion"], { state: {data: score} });
+      this.router.navigate(["/suggestion"], { state: {userScore: score, highestScore: this.calculateHighestScore()} });
     }
 
-    // give recommendation (can't do yet)
+    // clear out missedQuestions array
+    this.missedQuestions.splice(0, this.missedQuestions.length);
+
   }
 
   // calculate score
@@ -155,10 +183,20 @@ export class QuestionPanelComponent implements OnInit {
     this.qDataService.userAnswers.forEach((answer) => {
       score += answer.score;
     });
-
     return score;
   }
 
+  // calculate highest score possible
+  calculateHighestScore(): number {
+    var highestScore = 0;
+
+    this.qDataService.questions.forEach((questionSet) => {
+      var iLastElement = questionSet.options.answerSet.length-1; 
+      highestScore += questionSet.options.answerSet[iLastElement].score;
+    });
+
+    return highestScore;
+  }
 
   
 }

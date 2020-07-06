@@ -37,7 +37,7 @@ namespace COVID19MHApi
                 var context = services.GetRequiredService<QuestionContext>();
 
                 //4. Call the QuestionsDB to create sample data
-                QuestionsDB.Initialize(services);
+                C19MHDatabase.Initialize(services);
             }
 
             //Continue to run the application

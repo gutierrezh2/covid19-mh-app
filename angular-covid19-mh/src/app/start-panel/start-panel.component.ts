@@ -21,6 +21,7 @@ export class StartPanelComponent implements OnInit {
     //this.mhc19ApiService.get().subscribe((data: any) => this.questions = data);
     //this.qDataService.getMessage().subscribe(questions => this.questions = questions);
     //this.qDataService.currentMessage.subscribe(message => this.message = message)
+    //this.questions = this.qDataService.questions;
   }
   
 

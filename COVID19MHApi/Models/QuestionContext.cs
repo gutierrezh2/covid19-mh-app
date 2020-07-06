@@ -10,6 +10,7 @@ namespace COVID19MHApi.Models {
         }
 
         public DbSet<QuestionItem> QuestionItems { get; set; }
+        //public DbSet<SuggestionSetItem> SuggestionSetItems { get; set; } //*
         //public DbSet<AnswerItem> AnswerItems { get; set; }
         //public DbSet<AnswerSets> AnswerSets { get; set; }
     }

@@ -18,6 +18,8 @@ using Newtonsoft.Json.Serialization;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
+// PURPOSE: Starts off the web API when it's first run. Where the Question and SuggestionSet DB Contexts are registered, as well as any options for JSON Serialization, and CORS Policy.
+
 namespace COVID19MHApi
 {
     public class Startup

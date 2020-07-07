@@ -10,6 +10,8 @@ using COVID19MHApi.Models;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
+// PURPOSE: Contains the HTTP Methods for the Questions DB: GET (Array of Questions), GET (a single Question), PUT (Upate a Single question), POST (Add a new Question), and DELETE (a single Question); also includes a method to see if a Question ID exists, given an id value
+    // Scaffolded by "dotnet"
 namespace COVID19MHApi.Controllers
 {
     [Route("api/[controller]")]
@@ -28,8 +30,9 @@ namespace COVID19MHApi.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<QuestionItem>>> GetQuestionItems()
         {
+            // Includes QuestionItem, and the nested AnswerSet and Answer = SelectedAnswer
             return await _context.QuestionItems
-                .Include( q => q.Options.AnswerSet )
+                .Include( q => q.Options.AnswerSet ) 
                 .Include( q => q.SelectedAnswer )
                 .ToListAsync();
         }

@@ -27,20 +27,20 @@ namespace COVID19MHApi
 
         // References: https://exceptionnotfound.net/ef-core-inmemory-asp-net-core-store-database/, https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-mvc-app/working-with-sql?view=aspnetcore-3.0&tabs=visual-studio
         public static void Main(string[] args) {
-            //1. Get the IWebHost which will host this application.
+            // Get host that will host web app
             var host = CreateHostBuilder(args).Build();
 
-            //2. Find the service layer within our scope.
+            // Find the service layer within scope
             using (var scope = host.Services.CreateScope()) {
-                //3. Get the instance of QuestionContext in our services layer
+                // Get the instance of QuestionContext in our services layer
                 var services = scope.ServiceProvider;
                 var context = services.GetRequiredService<QuestionContext>();
 
-                //4. Call the QuestionsDB to create sample data
+                // Call the QuestionsDB to create sample data
                 C19MHDatabase.Initialize(services);
             }
 
-            //Continue to run the application
+            // Continue to run the application
             host.Run();
         }
 

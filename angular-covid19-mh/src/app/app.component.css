@@ -1,3 +1,7 @@
+* {
+    font-family: 'Quicksand', sans-serif;
+}
+
 body {
     text-align: center;
 }
@@ -25,4 +29,4 @@ button {
     grid-template-rows: 80px;
     grid-gap: 10px 10px;
     border: solid;
-  }
+}

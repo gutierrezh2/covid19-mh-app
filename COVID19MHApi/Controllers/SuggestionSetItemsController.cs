@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using COVID19MHApi.Models;
 
+// PURPOSE: Contains the HTTP Methods for the SuggestionSetItems DB: GET (Array of SuggestionSets), GET (a single SuggestionSet), PUT (Upate a Single SuggestionSet), POST (Add a new SuggestionSet), and DELETE (a single SuggestionSet); also includes a method to see if a SuggestionSet ID exists, given an id value
+    // Scaffolded by "dotnet"
 namespace COVID19MHApi.Controllers
 {
     [Route("api/[controller]")]
@@ -25,6 +27,7 @@ namespace COVID19MHApi.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<SuggestionSetItem>>> GetSuggestionSetItems()
         {
+            // Includes SuggestionSetItem and a SuggestionSet
             return await _context.SuggestionSetItems
                 .Include( s => s.SuggestionSet )
                 .ToListAsync();

@@ -9,14 +9,14 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class MHC19ApiService {
 
   private headers: HttpHeaders;
-  private accessPointUrl: string = 'https://localhost:5001/api/QuestionItems';
-  private suggestionsAccessPointUrl: string = 'https://localhost:5001/api/SuggestionSetItems/';
+  private accessPointUrl: string = 'https://localhost:5001/api/QuestionItems'; // URL for Questions DB
+  private suggestionsAccessPointUrl: string = 'https://localhost:5001/api/SuggestionSetItems/'; // URL for SuggestionSet DB
 
   constructor (private http: HttpClient) { 
-    this.headers = new HttpHeaders({'Content-Type': 'application/json; charset=utf-8'});
+    this.headers = new HttpHeaders({'Content-Type': 'application/json; charset=utf-8'}); // Contains important settings required for passing data between web API and front-end
   }
 
-  // Question
+  // PURPOSE: HTTP methods to interact with the seeded Questions in In-Memory DB
   public get() {
       return this.http.get(this.accessPointUrl, {headers: this.headers});
   }
@@ -33,7 +33,7 @@ export class MHC19ApiService {
       return this.http.put(this.accessPointUrl + '/' + payload.id, payload, {headers: this.headers});
   }
 
-  // SuggestionSet
+  // PURPOSE: HTTP methods to interact with the seeded SuggestionSet in In-Memory DB
   public getSuggestionSet() {
     return this.http.get(this.suggestionsAccessPointUrl, {headers: this.headers});
   }

@@ -16,6 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+// PURPOSE: Contains imported Modules for use within the web app's view.
 
 @NgModule({
   declarations: [
@@ -33,7 +34,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserAnimationsModule
   ],
   providers: [
-    MHC19ApiService //*
+    MHC19ApiService // Web API
   ],
   bootstrap: [AppComponent]
 })

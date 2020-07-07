@@ -1,14 +1,19 @@
+<!-- PURPOSE: Contains content for the last panel, which gives a suggestion to help manage their mental health, based on their score. -->
+
 <div class="container">
     <div class="grid-container">
+
+        <!-- HEADER: Displays the calculated score and scoring (low/medium/high) in the view -->
         <div class="item-1"><h2>Your score was {{score}}, which is in the {{suggestion.scoring}} range for scoring.</h2></div>
     
+        <!-- MAIN: Displays a suggestion based on the user's score -->
         <div class="item-2">
             <p>Based on your answers, I suggest...</p>
       
-            <!--<p>{{suggestions[0].suggestionSet[0].suggestion}}</p>-->
             <p>{{suggestion.suggestion}}</p>
         </div>
     
+        <!-- FOOTER: Displays a "Retake" button that clears out the map containing the user's previous answers before navigating back to the Start page/panel -->
         <div class="item-3">
             <a routerLink="/start">
                 <button (click)="retakeButton()">Retake Questionnaire</button>

@@ -1,9 +1,11 @@
 import { Question } from './question';
 //import { Answer } from './answer';
-import { ANSWERS_SET1 } from './answers-db';
-import { ANSWERS_SET2 } from './answers-db';
-import { ANSWERS_SET3 } from './answers-db';
-import { ANSWERS_SET4 } from './answers-db';
+//import { ANSWERS_SET1 } from './answers-db';
+//import { ANSWERS_SET2 } from './answers-db';
+//import { ANSWERS_SET3 } from './answers-db';
+//import { ANSWERS_SET4 } from './answers-db';
+
+// Do I need this??
  
 /*
 export interface Question {

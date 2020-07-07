@@ -27,8 +27,11 @@ export class QuestionPanelComponent extends BasePanelComponent implements OnInit
   }
 
 }*/
+
+// PURPOSE: Contains the code to pull a list of Questions from the Web API. Used to manipulate the data with the HTML elements to display the data as needed.  
 export class QuestionPanelComponent implements OnInit {
 
+  // VARIABLES //
   questions: Array<Question>;
   //userAnswers: Map<number, Answer> = new Map();
   options: Answer[];
@@ -40,17 +43,18 @@ export class QuestionPanelComponent implements OnInit {
 
   missedQuestions: number[] = []; // store array of Question IDs that have been missed to notify user
 
-
   constructor(private mhc19ApiService : MHC19ApiService, private qDataService : QuestionsDataService, private router : Router) { }
 
   ngOnInit(): void {
-    this.getQuestions();
+    this.getQuestions(); // Grabs the questions from the Web API upon initalizaion
     //this.getAnswers();
     //this.radioSelected = this.questions[this.qIndex].selectedAnswer.id; // set default value, if exists
     //this.setRadioValue();
   }
 
-  // allow this component to access the data pulled from API
+  // METHODS //
+
+  // PURPOSE: Grabs an array of Question objects from the Web API to display to the view
   getQuestions(): void {
     this.questions = this.qDataService.questions;
     /*this.mhc19ApiService.get()
@@ -64,6 +68,7 @@ export class QuestionPanelComponent implements OnInit {
     this.userAnswers = this.qDataService.userAnswers;
   }*/
 
+  // PURPOSE: Sets a radio value if one was already previously selected, otherwise, clears out this.radioSelected to ensure that no value is set when loading the view
   // set default value = prev. selected answer, otherwise, no default value set
   setRadioValue(): void {
     // if answer in userAnswers map, then set radioSelected = answer (id)
@@ -76,6 +81,7 @@ export class QuestionPanelComponent implements OnInit {
     }
   }
 
+  // PURPOSE: Activated when pressing the "Back" button on the view. Used to gather the selected response for the question, if there was one, before loading the previous Question
   prevQuestion(qIndex): void {
     //get selected option from form (in this.radioSelected) & create new answer object based on that
     this.gatherAnswer(); // set new answerSelected
@@ -93,6 +99,7 @@ export class QuestionPanelComponent implements OnInit {
 
   }
 
+  // PURPOSE: Activated when pressing the "Next" button on the view. Used to gather the selected response for the question, if there was one, before loading the next Question
   nextQuestion(qIndex): void {
     //get selected option from form (in this.radioSelected) & create new answer object based on that
     this.gatherAnswer(); // set new answerSelected
@@ -109,6 +116,7 @@ export class QuestionPanelComponent implements OnInit {
     this.setRadioValue();
   }
 
+  // PURPOSE: Get the selected option from the view, which is stored in "this.radioSelected", get the corresponding Answer object from the Question object, and set the Answer to "this.answerSelected"
   gatherAnswer(): void {
     this.options = this.questions[this.qIndex].options.answerSet;
   
@@ -121,6 +129,7 @@ export class QuestionPanelComponent implements OnInit {
     });
   }
 
+  // PURPOSE: Update a map (userAnswers) containing all the answers selected by the user with the current selection
   updateUserAnswers(): void {
     // if question id prev. in map, delete value
     if (this.qDataService.userAnswers.has(this.questions[this.qIndex].id)) {
@@ -142,6 +151,7 @@ export class QuestionPanelComponent implements OnInit {
     questionIndex -= 1;
   }*/
 
+  // PURPOSE: Activated when pressing the "Finish" button on the view. Used to gather the selected response for the question, if there was one, and checks to see if all questions have been answered. (If not, then the user will recieve an error telling them which questions need to be finished)
   // disable finish button until check of all questions have been answered?
     // return bool - if true, go to suggestions page, if false, stay on page and tell user which ones were missed?
   finishButton(qIndex): void {
@@ -176,7 +186,8 @@ export class QuestionPanelComponent implements OnInit {
 
   }
 
-  // calculate score
+  // Move last two methods in the suggestions panel?
+  // PURPOSE: Takes the score from each question, and adds them all up
   calculateScore(): number {
     var score = 0;
 
@@ -186,7 +197,7 @@ export class QuestionPanelComponent implements OnInit {
     return score;
   }
 
-  // calculate highest score possible
+  // PURPOSE: Calculates the highest score possible to do the math on the ranges for what defines the low/medium/high ranges
   calculateHighestScore(): number {
     var highestScore = 0;
 

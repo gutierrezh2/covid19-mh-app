@@ -5,7 +5,7 @@ import { StartPanelComponent } from './start-panel/start-panel.component';
 import { QuestionPanelComponent } from './question-panel/question-panel.component';
 import { SuggestionPanelComponent } from './suggestion-panel/suggestion-panel.component';
 
-// Lists paths for each screen (start, question, suggestion)
+// PURPOSE: Lists paths for each screen (start, question, suggestion)
 const routes: Routes = [
   { path: '', redirectTo: '/start', pathMatch: 'full' },
   {path: 'start', component: StartPanelComponent },
@@ -22,4 +22,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)], // configures AppRoutingModule array with routes
   exports: [RouterModule] // to make it available through app
 })
+
 export class AppRoutingModule { }

@@ -10,6 +10,8 @@ using System.Text.Json.Serialization;
 
 // References: https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-mvc-app/working-with-sql?view=aspnetcore-3.0&tabs=visual-studio, https://exceptionnotfound.net/ef-core-inmemory-asp-net-core-store-database/
 
+// PURPOSE: Contains all the seeded data for all the Question items, and SuggestionSet items, so it's there when the web API is initalized.
+
 public class C19MHDatabase {
     public static void Initialize(IServiceProvider serviceProvider)
     {
@@ -21,6 +23,7 @@ public class C19MHDatabase {
                 return;   // Data was already seeded
             }
 
+            // Seeded Question items
             context.QuestionItems.AddRange(
                 new QuestionItem() {
                     Id = 1,
@@ -178,7 +181,7 @@ public class C19MHDatabase {
             context.SaveChanges();
         }
 
-        // Suggestions
+        // Seeded SuggestionSets items
         using (var context = new SuggestionSetContext(
             serviceProvider.GetRequiredService<DbContextOptions<SuggestionSetContext>>()))
         {

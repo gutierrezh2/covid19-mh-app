@@ -1,1 +1,41 @@
 /* You can add global styles to this file, and also import other style files */
+
+body {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background-color: #b8bdd8;
+    font-family: 'Roboto', sans-serif;
+    color: #DED797;
+}
+
+button {
+    font-family: 'Roboto', sans-serif;
+    border-radius: 2px;
+    border: #eebb6e;
+    background-color: #e4a545;
+    transition-duration: 0.4s;
+    color: #FFFFFF;
+    box-shadow: 0 20px 54px -8px #2b3433;
+    width: 30%;
+    padding: 3%;
+}
+
+button:hover {
+    background-color: #D35B3F;
+    border: #D35B3F;
+    box-shadow: 0 20px 54px -8px #2b3433;
+    
+}
+
+.container {
+    display: inline-block;
+    background-color: #4f60bb;
+    color: #FFFFFF;
+    border-radius: 5px;
+    /*box-shadow: 0 8px 10px -8px #2b3433;*/
+}
+
+hr {
+    color: #757575;
+}

@@ -2,44 +2,62 @@
 /* For actual container itself and its alignment */
 
 
-.container {
+/*.container {
     display: inline-block;
     background-color: rgb(93, 154, 152);
     border-radius: 5px;
-}
+}*/
 
 /* For the grid within the box/container */
 .grid-container {
     display: grid;
     grid-template-columns: 50px 500px 50px;
-    grid-template-rows: auto auto 20px auto 20px;
+    grid-template-rows: auto auto 20px 20px;
     grid-template-areas:
-        ". header ."
+        "header header header"
         ". main ."
-        ". . ."
         ". footer ."
-        ". . ."
+        ". . .";
+    border-radius: 5px;
 }
 
 .item-1 {
     grid-area: header;
+    background-color: #303F9F;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    box-shadow: 0 8px 16px -8px #2b3433;
 }
 
 .item-2 {
     grid-area: main;
-    text-align: left;
+    text-align: start;
+    color: #ffffff;
+    padding-top: 5%;
+    width: 100%;
 }
 
 .item-3 {
     grid-area: footer;
+    color: #212121;
 }
 
 .button-nav {
     display: inline-block; /* have buttons beside each other */
+    /*margin-right: 50px;*/ /* Space between buttons */
+    width: 30%;
+    padding: 3%;
+    margin-right: 50px;
+
+    /*font-family: 'Roboto', sans-serif;
+    border-radius: 2px;
+    border: #eebb6e;
+    border-style: solid;
+    border-width: 2px;
+    background-color: #eebb6e;
+    transition-duration: 0.4s;
+    color: #FFFFFF;*/
+    /*box-shadow: 0 20px 54px -8px #2b3433;*/
 }
 
-#button-back {
-    /*text-align: justify;*/
-    background-color: aquamarine;
-    border-width: 1px;
-}
+/* ANIMATIONS */

@@ -1,10 +1,14 @@
 <!-- PURPOSE: Contains content for a Question panel, which displays a single question and allows a user to select an answer based on the pre-selected options listed. -->
 
 <div class="container">
+
   <div class="grid-container">
     
     <!-- HEADER: The question -->
-    <div class="item-1"><h2>{{questions[qIndex].id}}. {{questions[qIndex].question}}</h2></div>
+    <div class="item-1">
+      <h2>{{questions[qIndex].id}}. {{questions[qIndex].question}}</h2>
+
+    </div>
     
     <!-- MAIN: List of possible answers/options -->
     <div class="item-2">
@@ -50,10 +54,6 @@
         </label><br><br>
       </div>
 
-      <!--<p>{{radioSelected}}</p>-->
-      <!--<p>{{answerSelected}}</p>-->
-
-      <!--<p>{{answerSelected.id}}</p>-->
 
     </div>
 
@@ -62,30 +62,31 @@
 
       <!--Previous/Back Button-->
       <!--<div class="back">-->
-        <div class="button-nav" *ngIf="qIndex == (0); else elseBlock1">
+        <div *ngIf="qIndex == (0); else elseBlock1">
           <a routerLink="/start">
-            <button id=button-back>Back</button>
+            <button class="button-nav">Back</button>
           </a>
         </div>
 
         <ng-template #elseBlock1>
-          <button id=button-back routerLink="/question/{{questions[qIndex].id-1}}" (click)="prevQuestion(qIndex)">Back</button>
-        </ng-template>
+          <button class="button-nav" routerLink="/question/{{questions[qIndex].id-1}}" (click)="prevQuestion(qIndex)">Back</button>
+      </ng-template>
 
       <!--</div>-->
 
       <!--Next & Finish Buttons-->
       <!--<div class="next">-->
-        <div class="button-nav" *ngIf="qIndex == (questions.length-1); else elseBlock2">
+        <div *ngIf="qIndex == (questions.length-1); else elseBlock2">
           <!--<a routerLink="/suggestion">
             <button id=button-next (click)="finishButton(qIndex)">Finish</button>
           </a>-->
-          <button id=button-next (click)="finishButton(qIndex)">Finish</button>
+          <button (click)="finishButton(qIndex)">Finish</button>
         </div>
 
         <ng-template #elseBlock2>
-            <button id=button-next routerLink="/question/{{questions[qIndex].id+1}}" (click)="nextQuestion(qIndex)">Next</button>
+            <button routerLink="/question/{{questions[qIndex].id+1}}" (click)="nextQuestion(qIndex)">Next</button>
         </ng-template>
+
       <!--</div>-->
       
       <!--<a routerLink="/question:{{questionIndex}}">

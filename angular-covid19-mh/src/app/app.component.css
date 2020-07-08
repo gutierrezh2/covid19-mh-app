@@ -1,9 +1,6 @@
-* {
-    font-family: 'Quicksand', sans-serif;
-}
-
 body {
     text-align: center;
+    margin: 20px;
 }
 
 div {
@@ -16,11 +13,6 @@ div {
 p {
     text-align: center;
     font-family: sans-serif;
-}
-
-button {
-    background-color: rgb(102, 115, 162);
-    color: #ffffff;
 }
 
 .grid-container {

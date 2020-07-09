@@ -1,24 +1,25 @@
 body {
     text-align: center;
     margin: 20px;
+    height: 75%;
 }
 
-div {
+/*div {
     margin: 20px;
     border: 50px solid green;
     padding: 100px;
-    width: 50%; /* make relative */
-}
+    width: 75%; /* make relative */
+/*}
 
 p {
     text-align: center;
     font-family: sans-serif;
-}
+}*/
 
-.grid-container {
+/*.grid-container {
     display: inline-block;
     grid-template-columns: 80px;
     grid-template-rows: 80px;
     grid-gap: 10px 10px;
     border: solid;
-}
+}*/

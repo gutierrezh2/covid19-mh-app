@@ -1,41 +1,80 @@
 /* You can add global styles to this file, and also import other style files */
 
+/*
+Colours:
+Orange: #e4a545
+Red: #D35B3F
+Blue: #4f60bb, #303F9F
+*/
+
 body {
     margin: 0;
     padding: 0;
     border: 0;
     background-color: #b8bdd8;
     font-family: 'Roboto', sans-serif;
-    color: #DED797;
+    text-align: center;
 }
 
 button {
     font-family: 'Roboto', sans-serif;
     border-radius: 2px;
-    border: #eebb6e;
-    background-color: #e4a545;
+    border: #BDBDBD;
+    background-color: #BDBDBD;
     transition-duration: 0.4s;
-    color: #FFFFFF;
-    box-shadow: 0 20px 54px -8px #2b3433;
+    font-size: medium;
+    color: #000000;
+    /*box-shadow: 0 20px 54px -8px #2b3433;*/
     width: 30%;
     padding: 3%;
+    outline: none;
 }
 
 button:hover {
-    background-color: #D35B3F;
-    border: #D35B3F;
-    box-shadow: 0 20px 54px -8px #2b3433;
+    background-color: #e4a545;
+    border: #e4a545;
+    /*box-shadow: 0 20px 54px -8px #2b3433;*/
     
 }
 
 .container {
     display: inline-block;
-    background-color: #4f60bb;
-    color: #FFFFFF;
+    background-color: #f7f7f7;
+    color: #212121;
     border-radius: 5px;
-    /*box-shadow: 0 8px 10px -8px #2b3433;*/
+    box-shadow: 0 8px 10px -8px #2b3433;
+    width: 75%;
 }
 
-hr {
-    color: #757575;
+.grid-container {
+    padding: 2%;
+}
+
+/* References: https://stackoverflow.com/questions/4253920/how-do-i-change-the-color-of-radio-buttons */
+input[type='radio']:after {
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;
+    top: -2px;
+    left: -1px;
+    position: relative;
+    background-color: #d1d3d1;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid white;
+}
+
+input[type='radio']:checked:after {
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;
+    top: -2px;
+    left: -1px;
+    position: relative;
+    background-color:  #e4a545;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid white;
 }

@@ -1,15 +1,31 @@
 
 /* For actual container itself and its alignment */
 
+.error-msg {
+    border-style: solid;
+    border-radius: 5px;
+    border-color: #D35B3F;
+    background-color: rgb(240, 151, 151);
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 650px;
+    margin-bottom: 10px;
+    width: 75%;
+
+}
+
 .container {
-    max-width: 600px;
+    /*max-width: 600px;*/
+    background-color: #f7f7f7;
+    color: #212121;
 }
 
 /* For the grid within the box/container */
 .grid-container {
-    display: grid;
+    /*display: grid;
     grid-template-columns: 5% 90% 5%; /*50px 500px 50px;*/
-    grid-template-rows: auto auto auto;
+    /*grid-template-rows: auto;*/
     grid-template-areas:
         "header header header"
         ". main ."
@@ -20,15 +36,16 @@
 }
 
 .item-1 {
-    grid-area: header;
+    /*grid-area: header;*/
     background-color: #4f60bb;
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
     /*box-shadow: 0 8px 16px -8px #2b3433;*/
     color: #FFFFFF;
     display: inline-block;
-    padding-left: 5%;
-    padding-right: 5%;
+    /*padding-left: 5%;
+    padding-right: 5%;*/
+    padding: 0 7%;
 }
 
 /*h2 {
@@ -37,17 +54,23 @@
 }*/
 
 .item-2 {
-    grid-area: main;
+    /*grid-area: main;*/
     text-align: start;
     color: #212121;
-    padding-top: 5%;
+    padding-top: 4%;
     width: 100%;
 }
 
 .item-3 {
-    grid-area: footer;
+    /*grid-area: footer;*/
     color: #212121;
 }
+
+[hidden] {
+    display: none;
+}
+
+/* BUTTONS */
 
 .button-nav {
     display: inline-block; /* have buttons beside each other */

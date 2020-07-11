@@ -33,7 +33,7 @@ namespace COVID19MHApi.Controllers
             // Includes QuestionItem, and the nested AnswerSet and Answer = SelectedAnswer
             return await _context.QuestionItems
                 .Include( q => q.Options.AnswerSet ) 
-                .Include( q => q.SelectedAnswer )
+                /*.Include( q => q.SelectedAnswer )*/
                 .ToListAsync();
         }
 

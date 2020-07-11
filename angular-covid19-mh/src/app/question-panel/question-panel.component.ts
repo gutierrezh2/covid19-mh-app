@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Question } from '../question';
 import { Answer } from '../answer';
 import { AnswerSet } from '../answerSet';
@@ -12,7 +12,13 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 @Component({
   selector: 'app-question-panel',
   templateUrl: './question-panel.component.html',
-  styleUrls: ['./question-panel.component.css']
+  styleUrls: ['./question-panel.component.css'],
+  template: `
+  <div [hidden]="isHidden" class="error-msg">
+    <p>The following questions have not been answered: {{missedQuestions}}.<br>Please go back and answer these questions to retrieve your results.</p>
+  
+  </div>
+  `
 })
 /*
 export class QuestionPanelComponent extends BasePanelComponent implements OnInit {
@@ -41,7 +47,17 @@ export class QuestionPanelComponent implements OnInit {
   radioSelected: any;
   answerSelected: Answer;
 
-  missedQuestions: number[] = []; // store array of Question IDs that have been missed to notify user
+  @Input() missedQuestions: number[] = []; // store array of Question IDs that have been missed to notify user
+
+  isHidden = true;
+
+  /*htmlErrElement: HTMLElement;
+  createElement(htmlErrElement) {
+    var element = document.createElement("input");
+    element.setAttribute("type", htmlErrElement);
+    element.setAttribute("value", htmlErrElement);
+    element.setAttribute("name", htmlErrElement);
+  }*/
 
   constructor(private mhc19ApiService : MHC19ApiService, private qDataService : QuestionsDataService, private router : Router) { }
 
@@ -81,6 +97,7 @@ export class QuestionPanelComponent implements OnInit {
     }
   }
 
+  /*
   // PURPOSE: Activated when pressing the "Back" button on the view. Used to gather the selected response for the question, if there was one, before loading the previous Question
   prevQuestion(qIndex): void {
     //get selected option from form (in this.radioSelected) & create new answer object based on that
@@ -114,7 +131,26 @@ export class QuestionPanelComponent implements OnInit {
     // clear radioSelected for the next Question (the default will be set again for the next question)
     // this.radioSelected = null;
     this.setRadioValue();
+  }*/
+
+  // PURPOSE: Activated when pressing the "Prev" or "Next" button on the view. Used to gather the selected response for the question, if there was one, before loading the next or previous Question (indicated by what was passed in the HTML, qIndex plus or minus 1).
+  switchQuestion(newIndex): void {
+    //get selected option from form (in this.radioSelected) & create new answer object based on that
+    this.gatherAnswer(); // set new answerSelected
+
+    // update map of userAnswers (ie. remove prev. answer, replace with new one)
+    this.updateUserAnswers();
+        
+    // change page by updating the index
+    //this.qIndex += 1;
+    this.qIndex = newIndex;
+    //this.radioSelected = this.questions[this.qIndex].selectedAnswer.id; // set new val?
+
+    // clear radioSelected for the next Question (the default will be set again for the next question)
+    // this.radioSelected = null;
+    this.setRadioValue();
   }
+
 
   // PURPOSE: Get the selected option from the view, which is stored in "this.radioSelected", get the corresponding Answer object from the Question object, and set the Answer to "this.answerSelected"
   gatherAnswer(): void {
@@ -131,25 +167,23 @@ export class QuestionPanelComponent implements OnInit {
 
   // PURPOSE: Update a map (userAnswers) containing all the answers selected by the user with the current selection
   updateUserAnswers(): void {
-    // if question id prev. in map, delete value
-    if (this.qDataService.userAnswers.has(this.questions[this.qIndex].id)) {
-      this.qDataService.userAnswers.delete(this.questions[this.qIndex].id);
-    }
+      // if question id prev. in map, delete value
+      if (this.qDataService.userAnswers.has(this.questions[this.qIndex].id)) {
+        this.qDataService.userAnswers.delete(this.questions[this.qIndex].id);
+      }
 
-    // add new value in map if an answer was selected
-    if (this.radioSelected != undefined) {
-      this.qDataService.userAnswers.set(this.questions[this.qIndex].id, this.answerSelected);
+      // add new value in map if an answer was selected
+      if (this.radioSelected != undefined) {
+        this.qDataService.userAnswers.set(this.questions[this.qIndex].id, this.answerSelected);
 
+
+      //  console.log(`Id: ${this.questions[this.qIndex].id}`);
       // if question prev. unanswered (in missedQuestions), remove it
       /*if (this.missedQuestions.includes(this.questions[this.qIndex].id)) {
         this.missedQuestions.splice(this.questions[this.qIndex].id, 1);
       }*/
     }
   }
-
-  /*prevQuestion(questionId: number): void {
-    questionIndex -= 1;
-  }*/
 
   // PURPOSE: Activated when pressing the "Finish" button on the view. Used to gather the selected response for the question, if there was one, and checks to see if all questions have been answered. (If not, then the user will recieve an error telling them which questions need to be finished)
   // disable finish button until check of all questions have been answered?
@@ -164,16 +198,23 @@ export class QuestionPanelComponent implements OnInit {
     this.updateUserAnswers();
 
     // get dictionary to pull all answers - check if all questions were answered
-    this.qDataService.questions.forEach((question) => {
+    /*this.qDataService.questions.forEach((question) => {
       if (this.qDataService.userAnswers.has(question.id) === false) {
         this.missedQuestions.push(question.id);
       }
-    });
+    });*/
 
     // let user know of missed questions
-    if (this.missedQuestions.length != 0) {
-      alert(`The following questions haven't been answered: ${this.missedQuestions}`);
-    }
+    /*if (this.missedQuestions.length != 0) {
+      //alert(`The following questions haven't been answered: ${this.missedQuestions}`);
+      this.setErrorMsg(false);
+    } else {
+      this.setErrorMsg(true);
+    }*/
+
+    this.findMissedQuestions();
+
+    console.log(this.missedQuestions);
 
     // if missedQuestions array is empty, then calculate score
     if (this.missedQuestions.length === 0) {
@@ -184,6 +225,43 @@ export class QuestionPanelComponent implements OnInit {
     // clear out missedQuestions array
     this.missedQuestions.splice(0, this.missedQuestions.length);
 
+  }
+
+  // PURPOSE: Determine which numbers weren't answered
+  findMissedQuestions(): void {
+    // get dictionary to pull all answers - check if all questions were answered
+    this.qDataService.questions.forEach((question) => {
+      if (this.qDataService.userAnswers.has(question.id) === false) {
+        this.missedQuestions.push(question.id);
+      }
+    });
+
+    // let user know of missed questions
+    if (this.missedQuestions.length != 0) {
+      //alert(`The following questions haven't been answered: ${this.missedQuestions}`);
+
+      var errorMsgDiv = document.createElement("p");
+
+      var element = document.getElementsByClassName("error-msg")[0];
+      //element.insertAdjacentElement("afterbegin", this.errorMsgDiv);
+      if (element.childNodes.length != 0) {
+        element.removeChild(element.childNodes[0]);
+      }
+      element.insertAdjacentHTML("afterbegin", `<p>The following questions have not been answered: ${this.missedQuestions}.<br>Please go back and answer these questions to retrieve your results.</p>`);
+
+      this.setErrorMsg(false);
+    } else {
+      this.setErrorMsg(true);
+    }
+  }
+
+  getMissedQuestions(): number[] {
+    return this.missedQuestions;
+  }
+
+  // default = hidden = true
+  setErrorMsg(isErrors): void {
+    this.isHidden = isErrors; // if isErrors set to true, hide them
   }
 
   // Move last two methods in the suggestions panel?

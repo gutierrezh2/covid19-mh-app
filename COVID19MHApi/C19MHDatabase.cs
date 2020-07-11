@@ -5,6 +5,7 @@ using COVID19MHApi.Models;
 using System;
 using System.Linq;
 
+
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
@@ -28,7 +29,7 @@ public class C19MHDatabase {
                 new QuestionItem() {
                     Id = 1,
                     Question = "How are you right now?",
-                    Options = new AnswerSetItem() {
+                    Options = AnswerSetDatabase.AnswerSet1 /*new AnswerSetItem() {
                         Id = 1,
                         AnswerSet = new List<AnswerItem>() {
                         new AnswerItem() { Id = 1, Answer = "Really great", Score = 0 },
@@ -37,18 +38,18 @@ public class C19MHDatabase {
                         new AnswerItem() { Id = 4, Answer = "Bad", Score = 3 },
                         new AnswerItem() { Id = 5, Answer = "Really terrible", Score = 4 }
                         }
-                    },
-                    SelectedAnswer = new AnswerItem() {
+                    }*/
+                    /*SelectedAnswer = new AnswerItem() {
                         Id = 1,
                         Answer = "Really great",
                         Score = 0 },
-                    IsSelected = false
+                    IsSelected = false*/
                 },
 
                 new QuestionItem() {
                     Id = 2,
                     Question = "How much has your mood dropped or negatively changed (ex. more stressed) since COVID-19 started?",
-                    Options = new AnswerSetItem() {
+                    Options = AnswerSetDatabase.AnswerSet2 /*new AnswerSetItem() {
                         Id = 2,
                         AnswerSet = new List<AnswerItem>() {
                         new AnswerItem() { Id = 6, Answer = "Not at all", Score = 0 },
@@ -56,18 +57,18 @@ public class C19MHDatabase {
                         new AnswerItem() { Id = 8, Answer = "Somewhat", Score = 2 },
                         new AnswerItem() { Id = 9, Answer = "A lot", Score = 3 },
                         }
-                    },
-                    SelectedAnswer = new AnswerItem() {
+                    }
+                    /*SelectedAnswer = new AnswerItem() {
                         Id = 6,
                         Answer = "Not at all",
                         Score = 0 },
-                    IsSelected = false
+                    IsSelected = false*/
                 },
 
                 new QuestionItem() {
                     Id = 3,
                     Question = "How well have you been able to maintain your daily routine/life since COVID-19 started?",
-                    Options = new AnswerSetItem() {
+                    Options = AnswerSetDatabase.AnswerSet3 /*new AnswerSetItem() {
                         Id = 3,
                         AnswerSet = new List<AnswerItem>() {
                         new AnswerItem() { Id = 10, Answer = "Very well", Score = 0 },
@@ -75,18 +76,18 @@ public class C19MHDatabase {
                         new AnswerItem() { Id = 12, Answer = "Not very well", Score = 2 },
                         new AnswerItem() { Id = 13, Answer = "Not at all", Score = 3 },
                         }
-                    },
-                    SelectedAnswer = new AnswerItem() {
+                    }
+                    /*SelectedAnswer = new AnswerItem() {
                         Id = 12,
                         Answer = "Somewhat",
                         Score = 2 },
-                    IsSelected = true
+                    IsSelected = true*/
                 },
 
                 new QuestionItem() {
                     Id = 4,
                     Question = "Has there been a negative change in your sleeping habits? (ex. too much or too little sleep)",
-                    Options =  new AnswerSetItem() {
+                    Options = AnswerSetDatabase.AnswerSet2 /*new AnswerSetItem() {
                         Id = 4,
                         AnswerSet = new List<AnswerItem>() {
                         new AnswerItem() { Id = 14, Answer = "Not at all", Score = 0 },
@@ -94,18 +95,18 @@ public class C19MHDatabase {
                         new AnswerItem() { Id = 16, Answer = "Somewhat", Score = 2 },
                         new AnswerItem() { Id = 17, Answer = "A lot", Score = 3 },
                         }
-                    },
-                    SelectedAnswer = new AnswerItem() {
+                    }
+                    /*SelectedAnswer = new AnswerItem() {
                         Id = 14,
                         Answer = "Not at all",
                         Score = 0 },
-                    IsSelected = true
+                    IsSelected = true*/
                 },
 
                 new QuestionItem() {
                     Id = 5,
                     Question = "Has there been a negative change in your eating habits? (ex. increased or decreased eating)",
-                    Options =  new AnswerSetItem() {
+                    Options = AnswerSetDatabase.AnswerSet2 /*new AnswerSetItem() {
                         Id = 5,
                         AnswerSet = new List<AnswerItem>() {
                         new AnswerItem() { Id = 18, Answer = "Not at all", Score = 0 },
@@ -113,18 +114,18 @@ public class C19MHDatabase {
                         new AnswerItem() { Id = 20, Answer = "Somewhat", Score = 2 },
                         new AnswerItem() { Id = 21, Answer = "A lot", Score = 3 },
                         }
-                    },
-                    SelectedAnswer = new AnswerItem() {
+                    }
+                    /*SelectedAnswer = new AnswerItem() {
                         Id = 18,
                         Answer = "Not at all",
                         Score = 0 },
-                    IsSelected = true
+                    IsSelected = true*/
                 },
 
                 new QuestionItem() {
                     Id = 6,
                     Question = "Have there been any social concerns since COVID-19 started? (ex. strained relations within the household, isolation from loved ones)",
-                    Options =  new AnswerSetItem() {
+                    Options = AnswerSetDatabase.AnswerSet2 /*new AnswerSetItem() {
                         Id = 6,
                         AnswerSet = new List<AnswerItem>() {
                         new AnswerItem() { Id = 22, Answer = "Not at all", Score = 0 },
@@ -132,18 +133,18 @@ public class C19MHDatabase {
                         new AnswerItem() { Id = 24, Answer = "Somewhat", Score = 2 },
                         new AnswerItem() { Id = 25, Answer = "A lot", Score = 3 },
                         }
-                    },
-                    SelectedAnswer = new AnswerItem() {
+                    }
+                    /*SelectedAnswer = new AnswerItem() {
                         Id = 22,
                         Answer = "Not at all",
                         Score = 0 },
-                    IsSelected = true
+                    IsSelected = true*/
                 },
 
                 new QuestionItem() {
                     Id = 7,
                     Question = "Have there been negavtive changes in your life as a result of COVID-19? (ex. lost job, isolation from loved ones, financial concerns)",
-                    Options =  new AnswerSetItem() {
+                    Options = AnswerSetDatabase.AnswerSet2 /*new AnswerSetItem() {
                         Id = 7,
                         AnswerSet = new List<AnswerItem>() {
                         new AnswerItem() { Id = 26, Answer = "Not at all", Score = 0 },
@@ -151,29 +152,29 @@ public class C19MHDatabase {
                         new AnswerItem() { Id = 28, Answer = "Somewhat", Score = 2 },
                         new AnswerItem() { Id = 29, Answer = "A lot", Score = 3 },
                         }
-                    },
-                    SelectedAnswer = new AnswerItem() {
+                    }
+                    /*SelectedAnswer = new AnswerItem() {
                         Id = 26,
                         Answer = "Not at all",
                         Score = 0 },
-                    IsSelected = true
+                    IsSelected = true*/
                 },
 
                 new QuestionItem() {
                     Id = 8,
                     Question = "Do you have a history of diagnosed mental illness?",
-                    Options =  new AnswerSetItem() {
+                    Options = AnswerSetDatabase.AnswerSet4 /*new AnswerSetItem() {
                         Id = 8,
                         AnswerSet = new List<AnswerItem>() {
                         new AnswerItem() { Id = 30, Answer = "No", Score = 0 },
                         new AnswerItem() { Id = 31, Answer = "Yes", Score = 1 }
                         }
-                    },
-                    SelectedAnswer = new AnswerItem() {
+                    }
+                    /*SelectedAnswer = new AnswerItem() {
                         Id = 31,
                         Answer = "Yes",
                         Score = 1 },
-                    IsSelected = true
+                    IsSelected = true*/
                 }
 
                 );

@@ -14,6 +14,7 @@ body {
     background-color: #b8bdd8;
     font-family: 'Roboto', sans-serif;
     text-align: center;
+    margin-top: 30px;
 }
 
 button {
@@ -37,20 +38,43 @@ button:hover {
     
 }
 
+/* CUSTOM SELECTOR STYLING */
+
 .container {
     display: inline-block;
-    background-color: #f7f7f7;
-    color: #212121;
+    /*background-color: #f7f7f7;
+    color: #212121;*/
     border-radius: 5px;
     box-shadow: 0 8px 10px -8px #2b3433;
     width: 75%;
+    max-width: 650px;
+
+    background-color: #5e6cba;
+    color: #FFFFFF;
 }
 
 .grid-container {
+    /*padding: 2%;*/
+    display: grid;
+    grid-template-columns: 8% 84% 8%; /*50px 500px 50px;*/
+    grid-template-rows: auto;
+}
+
+.item-1 {
+    grid-area: header;
     padding: 2%;
 }
 
-/* References: https://stackoverflow.com/questions/4253920/how-do-i-change-the-color-of-radio-buttons */
+.item-2 {
+    grid-area: main;
+}
+
+.item-3 {
+    grid-area: footer;
+}
+
+/* RADIO BUTTON STYLING */
+/*Reference: https://stackoverflow.com/questions/4253920/how-do-i-change-the-color-of-radio-buttons */
 input[type='radio']:after {
     width: 15px;
     height: 15px;
@@ -77,4 +101,46 @@ input[type='radio']:checked:after {
     display: inline-block;
     visibility: visible;
     border: 2px solid white;
+}
+
+/* ANIMATIONS */
+
+/* Fade In Up */
+@keyframes fadeInUp {
+    from {
+        transform: translate3d(0,40px,0)
+    }
+
+    to {
+        transform: translate3d(0,0,0);
+        opacity: 1
+    }
+}
+
+@-webkit-keyframes fadeInUp {
+    from {
+        transform: translate3d(0,40px,0)
+    }
+
+    to {
+        transform: translate3d(0,0,0);
+        opacity: 1
+    }
+}
+
+.animated {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-fill-mode: both
+}
+
+.animatedFadeInUp {
+    opacity: 0
+}
+
+.fadeInUp {
+    opacity: 0;
+    animation-name: fadeInUp;
+    -webkit-animation-name: fadeInUp;
 }

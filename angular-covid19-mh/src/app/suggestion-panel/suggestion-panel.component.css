@@ -40,3 +40,7 @@
 p {
     margin: 2%;
 }
+
+.button-retake {
+    min-width: 150px;
+}

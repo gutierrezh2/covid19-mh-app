@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MHC19ApiService } from '../mhc19api.service'; // web api
-import { QuestionsDataService } from '../questions-data.service';
+import { QuestionsDataService } from '../questions-data.service'; // where data is stored from pulling from web api
 import { SuggestionSet } from '../suggestionSet';
 import { Suggestion } from '../suggestion';
 
@@ -22,8 +22,10 @@ export class SuggestionPanelComponent implements OnInit {
   constructor(private mhc19ApiService : MHC19ApiService, private qDataService : QuestionsDataService) { }
 
   ngOnInit(): void {
-    this.score = history.state.userScore; // pull calculated score from previous page
-    this.highestScore = history.state.highestScore; // pull number of questions from previous page
+    //this.score = history.state.userScore; // pull calculated score from previous page
+    //this.highestScore = history.state.highestScore; // pull number of questions from previous page
+    this.score = this.calculateScore();
+    this.highestScore = this.calculateHighestScore();
     this.getSuggestionSet(); // get list of suggestions from API
     this.makeASuggestion(); // calculate a suggestion based on the score
   }
@@ -54,6 +56,28 @@ export class SuggestionPanelComponent implements OnInit {
       // access suggestions[2], id=3
       this.suggestion = this.suggestions[2].suggestionSet[Math.floor(Math.random() * this.suggestions[2].suggestionSet.length)];
     }
+  }
+
+  // PURPOSE: Takes the score from each question, and adds them all up
+  calculateScore(): number {
+    var score = 0;
+
+    this.qDataService.userAnswers.forEach((answer) => {
+      score += answer.score;
+    });
+    return score;
+  }
+
+  // PURPOSE: Calculates the highest score possible to do the math on the ranges for what defines the low/medium/high ranges
+  calculateHighestScore(): number {
+    var highestScore = 0;
+
+    this.qDataService.questions.forEach((questionSet) => {
+      var iLastElement = questionSet.options.answerSet.length-1; 
+      highestScore += questionSet.options.answerSet[iLastElement].score;
+    });
+
+    return highestScore;
   }
 
   // PURPOSE: Clears out the map that contains a user's answers, so that the user starts out fresh when re-doing the mental health assessment

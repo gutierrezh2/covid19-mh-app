@@ -5,13 +5,9 @@ using COVID19MHApi.Models;
 using System;
 using System.Linq;
 
-
-using System.Text.Json;
-using System.Text.Json.Serialization;
-
 // References: https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-mvc-app/working-with-sql?view=aspnetcore-3.0&tabs=visual-studio, https://exceptionnotfound.net/ef-core-inmemory-asp-net-core-store-database/
 
-// PURPOSE: Contains all the seeded data for all the Question items, and SuggestionSet items, so it's there when the web API is initalized.
+// PURPOSE: Contains all the seeded data for all the Question items and SuggestionSet items, so the data is already there when the web API is initalized.
 
 public class C19MHDatabase {
     public static void Initialize(IServiceProvider serviceProvider)
@@ -19,9 +15,10 @@ public class C19MHDatabase {
         using (var context = new QuestionContext(
             serviceProvider.GetRequiredService<DbContextOptions<QuestionContext>>()))
         {
+            // Data already seeded
             if (context.QuestionItems.Any())
             {
-                return;   // Data was already seeded
+                return;
             }
 
             // Seeded Question items
@@ -29,152 +26,49 @@ public class C19MHDatabase {
                 new QuestionItem() {
                     Id = 1,
                     Question = "How are you right now?",
-                    Options = AnswerSetDatabase.AnswerSet1 /*new AnswerSetItem() {
-                        Id = 1,
-                        AnswerSet = new List<AnswerItem>() {
-                        new AnswerItem() { Id = 1, Answer = "Really great", Score = 0 },
-                        new AnswerItem() { Id = 2, Answer = "Good", Score = 1 },
-                        new AnswerItem() { Id = 3, Answer = "Okay", Score = 2 },
-                        new AnswerItem() { Id = 4, Answer = "Bad", Score = 3 },
-                        new AnswerItem() { Id = 5, Answer = "Really terrible", Score = 4 }
-                        }
-                    }*/
-                    /*SelectedAnswer = new AnswerItem() {
-                        Id = 1,
-                        Answer = "Really great",
-                        Score = 0 },
-                    IsSelected = false*/
+                    Options = AnswerSetDatabase.AnswerSet1
                 },
 
                 new QuestionItem() {
                     Id = 2,
                     Question = "How much has your mood dropped or negatively changed (ex. more stressed) since COVID-19 started?",
-                    Options = AnswerSetDatabase.AnswerSet2 /*new AnswerSetItem() {
-                        Id = 2,
-                        AnswerSet = new List<AnswerItem>() {
-                        new AnswerItem() { Id = 6, Answer = "Not at all", Score = 0 },
-                        new AnswerItem() { Id = 7, Answer = "A little", Score = 1 },
-                        new AnswerItem() { Id = 8, Answer = "Somewhat", Score = 2 },
-                        new AnswerItem() { Id = 9, Answer = "A lot", Score = 3 },
-                        }
-                    }
-                    /*SelectedAnswer = new AnswerItem() {
-                        Id = 6,
-                        Answer = "Not at all",
-                        Score = 0 },
-                    IsSelected = false*/
+                    Options = AnswerSetDatabase.AnswerSet2
                 },
 
                 new QuestionItem() {
                     Id = 3,
                     Question = "How well have you been able to maintain your daily routine/life since COVID-19 started?",
-                    Options = AnswerSetDatabase.AnswerSet3 /*new AnswerSetItem() {
-                        Id = 3,
-                        AnswerSet = new List<AnswerItem>() {
-                        new AnswerItem() { Id = 10, Answer = "Very well", Score = 0 },
-                        new AnswerItem() { Id = 11, Answer = "Somewhat well", Score = 1 },
-                        new AnswerItem() { Id = 12, Answer = "Not very well", Score = 2 },
-                        new AnswerItem() { Id = 13, Answer = "Not at all", Score = 3 },
-                        }
-                    }
-                    /*SelectedAnswer = new AnswerItem() {
-                        Id = 12,
-                        Answer = "Somewhat",
-                        Score = 2 },
-                    IsSelected = true*/
+                    Options = AnswerSetDatabase.AnswerSet3
                 },
 
                 new QuestionItem() {
                     Id = 4,
                     Question = "Has there been a negative change in your sleeping habits? (ex. too much or too little sleep)",
-                    Options = AnswerSetDatabase.AnswerSet2 /*new AnswerSetItem() {
-                        Id = 4,
-                        AnswerSet = new List<AnswerItem>() {
-                        new AnswerItem() { Id = 14, Answer = "Not at all", Score = 0 },
-                        new AnswerItem() { Id = 15, Answer = "A little", Score = 1 },
-                        new AnswerItem() { Id = 16, Answer = "Somewhat", Score = 2 },
-                        new AnswerItem() { Id = 17, Answer = "A lot", Score = 3 },
-                        }
-                    }
-                    /*SelectedAnswer = new AnswerItem() {
-                        Id = 14,
-                        Answer = "Not at all",
-                        Score = 0 },
-                    IsSelected = true*/
+                    Options = AnswerSetDatabase.AnswerSet2
                 },
 
                 new QuestionItem() {
                     Id = 5,
                     Question = "Has there been a negative change in your eating habits? (ex. increased or decreased eating)",
-                    Options = AnswerSetDatabase.AnswerSet2 /*new AnswerSetItem() {
-                        Id = 5,
-                        AnswerSet = new List<AnswerItem>() {
-                        new AnswerItem() { Id = 18, Answer = "Not at all", Score = 0 },
-                        new AnswerItem() { Id = 19, Answer = "A little", Score = 1 },
-                        new AnswerItem() { Id = 20, Answer = "Somewhat", Score = 2 },
-                        new AnswerItem() { Id = 21, Answer = "A lot", Score = 3 },
-                        }
-                    }
-                    /*SelectedAnswer = new AnswerItem() {
-                        Id = 18,
-                        Answer = "Not at all",
-                        Score = 0 },
-                    IsSelected = true*/
+                    Options = AnswerSetDatabase.AnswerSet2
                 },
 
                 new QuestionItem() {
                     Id = 6,
                     Question = "Have there been any social concerns since COVID-19 started? (ex. strained relations within the household, isolation from loved ones)",
-                    Options = AnswerSetDatabase.AnswerSet2 /*new AnswerSetItem() {
-                        Id = 6,
-                        AnswerSet = new List<AnswerItem>() {
-                        new AnswerItem() { Id = 22, Answer = "Not at all", Score = 0 },
-                        new AnswerItem() { Id = 23, Answer = "A little", Score = 1 },
-                        new AnswerItem() { Id = 24, Answer = "Somewhat", Score = 2 },
-                        new AnswerItem() { Id = 25, Answer = "A lot", Score = 3 },
-                        }
-                    }
-                    /*SelectedAnswer = new AnswerItem() {
-                        Id = 22,
-                        Answer = "Not at all",
-                        Score = 0 },
-                    IsSelected = true*/
+                    Options = AnswerSetDatabase.AnswerSet2
                 },
 
                 new QuestionItem() {
                     Id = 7,
                     Question = "Have there been negavtive changes in your life as a result of COVID-19? (ex. lost job, isolation from loved ones, financial concerns)",
-                    Options = AnswerSetDatabase.AnswerSet2 /*new AnswerSetItem() {
-                        Id = 7,
-                        AnswerSet = new List<AnswerItem>() {
-                        new AnswerItem() { Id = 26, Answer = "Not at all", Score = 0 },
-                        new AnswerItem() { Id = 27, Answer = "A little", Score = 1 },
-                        new AnswerItem() { Id = 28, Answer = "Somewhat", Score = 2 },
-                        new AnswerItem() { Id = 29, Answer = "A lot", Score = 3 },
-                        }
-                    }
-                    /*SelectedAnswer = new AnswerItem() {
-                        Id = 26,
-                        Answer = "Not at all",
-                        Score = 0 },
-                    IsSelected = true*/
+                    Options = AnswerSetDatabase.AnswerSet2
                 },
 
                 new QuestionItem() {
                     Id = 8,
                     Question = "Do you have a history of diagnosed mental illness?",
-                    Options = AnswerSetDatabase.AnswerSet4 /*new AnswerSetItem() {
-                        Id = 8,
-                        AnswerSet = new List<AnswerItem>() {
-                        new AnswerItem() { Id = 30, Answer = "No", Score = 0 },
-                        new AnswerItem() { Id = 31, Answer = "Yes", Score = 1 }
-                        }
-                    }
-                    /*SelectedAnswer = new AnswerItem() {
-                        Id = 31,
-                        Answer = "Yes",
-                        Score = 1 },
-                    IsSelected = true*/
+                    Options = AnswerSetDatabase.AnswerSet4
                 }
 
                 );
@@ -182,15 +76,17 @@ public class C19MHDatabase {
             context.SaveChanges();
         }
 
-        // Seeded SuggestionSets items
+        // SuggestionSets items
         using (var context = new SuggestionSetContext(
             serviceProvider.GetRequiredService<DbContextOptions<SuggestionSetContext>>()))
         {
+            // Data already seeded
             if (context.SuggestionSetItems.Any())
             {
-                return;   // Data was already seeded
+                return;
             }
 
+            // Seeded SuggestionSets items
             context.SuggestionSetItems.AddRange(
                 new SuggestionSetItem() {
                     Id = 1,

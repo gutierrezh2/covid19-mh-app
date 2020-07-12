@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 
 // PURPOSE: Create a Database Context for the Questions DB, for querying or saving data to the DB.
+
 namespace COVID19MHApi.Models {
     public class QuestionContext : DbContext
     {
@@ -12,8 +13,5 @@ namespace COVID19MHApi.Models {
 
         // Entities: QuestionItem
         public DbSet<QuestionItem> QuestionItems { get; set; }
-        //public DbSet<SuggestionSetItem> SuggestionSetItems { get; set; } //*
-        //public DbSet<AnswerItem> AnswerItems { get; set; }
-        //public DbSet<AnswerSets> AnswerSets { get; set; }
     }
 }

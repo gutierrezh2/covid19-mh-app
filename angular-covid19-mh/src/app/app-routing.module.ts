@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-//import { CommonModule } from '@angular/common';
 import { StartPanelComponent } from './start-panel/start-panel.component';
 import { QuestionPanelComponent } from './question-panel/question-panel.component';
 import { SuggestionPanelComponent } from './suggestion-panel/suggestion-panel.component';
@@ -16,9 +15,6 @@ const routes: Routes = [
 // Initializes router, starts listening for browser location changes
 @NgModule({
   declarations: [],
-  /*imports: [
-    CommonModule
-  ]*/
   imports: [RouterModule.forRoot(routes)], // configures AppRoutingModule array with routes
   exports: [RouterModule] // to make it available through app
 })

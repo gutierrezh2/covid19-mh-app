@@ -1,40 +1,26 @@
-/* For actual container itself and its alignment */
-
-/*.container {
-    /*background-color: #5e6cba;
-    color: #FFFFFF;*/
-    /*border-radius: 5px;*/
-    /*max-width: 600px;*/
-
-    /*display: inline-block;*/
-    /*box-shadow: 0 8px 10px -8px #2b3433;*/
-    /*min-height: 240px;*/
-    /*text-align: center;*/
-/*}*/
+/* PURPOSE: Customized styling for the Start panel */
 
 /* For the grid within the box/container */
 .grid-container {
-    /*display: grid;
-    grid-template-columns: 5% 90% 5%;/*50px 500px 50px;*/
-    /*grid-template-rows: auto; /*5% auto 80px 5%;*/
     grid-template-areas:
         ". main ."
         ". footer .";
-    /*align-items: center;*/
+    padding: 2%;
 }
 
+/* MAIN: The text introducing the app to the user */
 .item-1 {
     grid-area: main;
-    /*padding: 2%;*/
 }
 
 p {
     margin: 0;
 }
 
+/* FOOTER: The "Start" button */
 .item-2 {
     grid-area: footer;
-    padding: 2%;
+    padding: 2%; /* Give the button some space between the MAIN and the edge of the CONTAINER */
 }
 
 /* BUTTONS */
@@ -42,7 +28,4 @@ p {
 .button-start {
     width: 30%;
     padding: 3%;
-    /*border-color: rgb(76, 76, 76);*/
 }
-
-/* ANIMATIONS */

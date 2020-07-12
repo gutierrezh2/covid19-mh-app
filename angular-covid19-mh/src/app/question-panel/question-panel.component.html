@@ -1,74 +1,57 @@
 <!-- PURPOSE: Contains content for a Question panel, which displays a single question and allows a user to select an answer based on the pre-selected options listed. -->
 
-<!--<div [hidden]="isHidden" class="error-msg" *ngIf="isHidden">
-  <p>The following questions have not been answered: {{missedQuestions}}.<br>Please go back and answer these questions to retrieve your results.</p>
-  
-</div>-->
+<!-- ERROR MESSAGE: Stays hidden until the "Finish" button is selected; lets the user know if they missed any questions -->
 <div [hidden]="isHidden" class="error-msg">
-    <!--<p id="error-content">The following questions have not been answered: {{missedQuestions}}.<br>Please go back and answer these questions to retrieve your results.</p>-->
+    <p id="error-content">The following questions have not been answered: {{missedQuestions}}.<br>Please go back and answer these questions to retrieve your results.</p>
 </div>
-  
+
+<!-- CONTAINER [QUESTION PANEL]: Contains the "panel", or section that has all the info needed to display a question, some options, and some buttons to navigate between questions -->
 <div class="container">
   
-    <div class="grid-container">
-      
-      <!-- HEADER: The question -->
-      <div class="item-1">
-        <h2>{{questions[qIndex].id}}. {{questions[qIndex].question}}</h2>
-  
-      </div>
-      
-      <!-- MAIN: List of possible answers/options -->
-      <div class="item-2">
-  
-        <div *ngFor="let answerSet of questions[qIndex].options.answerSet">
-          <label for ="{{answerSet.answer}}">
-            <!--<div *ngIf="answerSet.id == questions[qIndex].selectedAnswer.id">-->
-            <input id="a-{{answerSet.answer.id}}" [value]='answerSet.id' type="radio" name="mood" [(ngModel)]="radioSelected">
-            {{answerSet.answer}}
-          </label><br><br>
-        </div>
-  
-      </div>
-  
-      <!-- FOOTER: Back and Next buttons -->
-      <div class="item-3">
-  
-        <!--Previous/Back Button-->
-        <!--<div class="back">-->
-          <div *ngIf="qIndex == (0); else elseBlock1">
-            <a routerLink="/start">
-              <button class="button-nav button-back">Back</button>
-            </a>
-          </div>
-  
-          <ng-template #elseBlock1>
-            <button class="button-nav button-back" routerLink="/question/{{questions[qIndex].id-1}}" (click)="switchQuestion(qIndex-1); setErrorMsg(true)">Back</button>
-          </ng-template>
-  
-        <!--</div>-->
-  
-        <!--Next & Finish Buttons-->
-        <!--<div class="next">-->
-          <div *ngIf="qIndex == (questions.length-1); else elseBlock2">
-            <!--<a routerLink="/suggestion">
-              <button id=button-next (click)="finishButton(qIndex)">Finish</button>
-            </a>-->
-  
-            <button class="button-nav button-next" (click)="finishButton()">Finish</button>
-          </div>
-  
-          <ng-template #elseBlock2>
-              <button class="button-nav button-next" routerLink="/question/{{questions[qIndex].id+1}}" (click)="switchQuestion(qIndex+1)">Next</button>
-          </ng-template>
-  
-        <!--</div>-->
-        
-        <!--<a routerLink="/question:{{questionIndex}}">
-          <button id=button-next (click)="nextQuestion(questionIndex)">Next</button>
-        </a>-->
-  
-      </div>
+  <div class="grid-container">
+    
+    <!-- HEADER: The question -->
+    <div class="item-1">
+      <h2>{{questions[qIndex].id}}. {{questions[qIndex].question}}</h2>
+
     </div>
-  
+    
+    <!-- MAIN: List of possible answers/options -->
+    <div class="item-2">
+
+      <div *ngFor="let answerSet of questions[qIndex].options.answerSet">
+        <label for ="{{answerSet.answer}}">
+          <input id="a-{{answerSet.answer.id}}" [value]='answerSet.id' type="radio" name="mood" [(ngModel)]="radioSelected">
+          {{answerSet.answer}}
+        </label><br><br>
+      </div>
+
+    </div>
+
+    <!-- FOOTER: Back and Next buttons -->
+    <div class="item-3">
+
+      <!--Previous/Back Button-->
+        <div *ngIf="qIndex == (0); else elseBlock1">
+          <a routerLink="/start">
+            <button class="button-nav button-back" (click)="gatherAnswer(); updateUserAnswers(); setRadioValue()">Back</button>
+          </a>
+        </div>
+
+        <ng-template #elseBlock1>
+          <button class="button-nav button-back" routerLink="/question/{{questions[qIndex].id-1}}" (click)="switchQuestion(qIndex-1); setErrorMsg(true)">Back</button>
+        </ng-template>
+
+      <!--Next & Finish Buttons-->
+        <div *ngIf="qIndex == (questions.length-1); else elseBlock2">
+          <button class="button-nav button-next" (click)="finishButton()">Finish</button>
+        </div>
+
+        <ng-template #elseBlock2>
+            <button class="button-nav button-next" routerLink="/question/{{questions[qIndex].id+1}}" (click)="switchQuestion(qIndex+1)">Next</button>
+        </ng-template>
+
+    </div>
+  </div>
+
 </div>

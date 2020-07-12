@@ -1,52 +1,40 @@
-/*.container {
-    /*display: inline-block;*/
-    /*background-color: #5e6cba;
-    color: #FFFFFF;*/
-    /*border-radius: 5px;*/
-    /*max-width: 600px;*/
-/*}*/
+/* PURPOSE: Customized styling for the Suggestion panel */
 
 /* For the grid within the box/container */
 .grid-container {
-    /*display: grid;
-    grid-template-columns: 5% 90% 5%;
-    grid-template-rows: auto;*/
     grid-template-areas:
         ". header ."
         ". main ."
         ". footer .";
 }
 
-.item-1 {
-    /*grid-area: header;*/
-    /*margin: 2%;*/
-    /*padding: 2%;*/
-}
-
-.item-2 {
-    /*grid-area: main;*/
-    /*text-align: center;*/
-}
-
+/* FOOTER: The "Retake Assessment" button  */
 .item-3 {
-    /*grid-area: footer;*/
     margin-bottom: 4%;
 }
 
 /* TEXT */
 
+/* For the top text telling the user their score */
 .scoring-text {
     margin: 0;
+    margin-top: 2%;
 }
 
+/* To customize the color, highlighting the user's score and risk */
+.risk-text {
+    color: #e4a545;
+    font-weight: bold;
+}
+
+/* For the text giving the user a suggestion based on their score */
 .suggestion-text {
     display: inline-block;
     margin: 3%;
     min-width: 85%;
     min-height: 5%;
-    /*background-color: #e4a545;
-    width: 25%;
-    height: 50%;*/
+    color: #e4a545;
+    text-transform: capitalize;
 }
 
 p {

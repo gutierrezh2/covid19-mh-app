@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 
+// PURPOSE: Create a SuggestionSet Context for the SuggestionSet DB, for querying or saving data to the DB.
+
 namespace COVID19MHApi.Models {
     public class SuggestionSetContext : DbContext
     {
@@ -9,6 +11,7 @@ namespace COVID19MHApi.Models {
 
         }
 
-        public DbSet<SuggestionSetItem> SuggestionSetItems { get; set; } //*
+        // Entities: SuggestionSetItem
+        public DbSet<SuggestionSetItem> SuggestionSetItems { get; set; } 
     }
 }

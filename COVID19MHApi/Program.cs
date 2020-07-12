@@ -1,31 +1,16 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
-
 using COVID19MHApi.Models;
 using Microsoft.Extensions.DependencyInjection;
+
+// PURPOSE: Initalizes the web API, grabbing the host, service provider, and the seeded data to start the web API.
 
 namespace COVID19MHApi
 {
     public class Program
     {
-        /*public static void Main(string[] args)
-        {
-            CreateHostBuilder(args).Build().Run();
-        }
-
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder.UseStartup<Startup>();
-                });*/
-
         // References: https://exceptionnotfound.net/ef-core-inmemory-asp-net-core-store-database/, https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-mvc-app/working-with-sql?view=aspnetcore-3.0&tabs=visual-studio
+
         public static void Main(string[] args) {
             // Get host that will host web app
             var host = CreateHostBuilder(args).Build();

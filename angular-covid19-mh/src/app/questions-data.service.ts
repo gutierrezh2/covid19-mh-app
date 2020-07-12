@@ -3,7 +3,6 @@ import { Question } from './question';
 import { Answer } from './answer';
 import { SuggestionSet } from './suggestionSet';
 import { MHC19ApiService } from './mhc19api.service'; // web api
-import { Subject, BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'

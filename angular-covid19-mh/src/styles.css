@@ -1,4 +1,5 @@
-/* You can add global styles to this file, and also import other style files */
+/* PURPOSE: To add global styles to this file, and import other style files, if needed. */ 
+/* NOTE: Styling code here is passed down to elements across all the panel components that share the same names, as all three panels share a similar structure, allowing this to be possible. In other words, this css is applied to all elements throughout the three components, and if necessary, the css is overwritten in the components' individual css files.  */
 
 /*
 Colours:
@@ -7,6 +8,7 @@ Red: #D35B3F
 Blue: #4f60bb, #303F9F
 */
 
+/* Default body style */
 body {
     margin: 0;
     padding: 0;
@@ -17,6 +19,7 @@ body {
     margin-top: 30px;
 }
 
+/* Default button style */
 button {
     font-family: 'Roboto', sans-serif;
     border-radius: 2px;
@@ -25,7 +28,6 @@ button {
     transition-duration: 0.4s;
     font-size: medium;
     color: #000000;
-    /*box-shadow: 0 20px 54px -8px #2b3433;*/
     width: 30%;
     padding: 3%;
     outline: none;
@@ -33,42 +35,39 @@ button {
 
 button:hover {
     background-color: #e4a545;
-    border: #e4a545;
-    /*box-shadow: 0 20px 54px -8px #2b3433;*/
-    
+    border: #e4a545;   
 }
 
-/* CUSTOM SELECTOR STYLING */
+/* DEFAULT CUSTOM SELECTOR STYLING */
 
 .container {
     display: inline-block;
-    /*background-color: #f7f7f7;
-    color: #212121;*/
     border-radius: 5px;
     box-shadow: 0 8px 10px -8px #2b3433;
     width: 75%;
     max-width: 650px;
-
     background-color: #5e6cba;
     color: #FFFFFF;
 }
 
 .grid-container {
-    /*padding: 2%;*/
     display: grid;
-    grid-template-columns: 8% 84% 8%; /*50px 500px 50px;*/
+    grid-template-columns: 8% 84% 8%;
     grid-template-rows: auto;
 }
 
+/* HEADER */
 .item-1 {
     grid-area: header;
     padding: 2%;
 }
 
+/* MAIN TEXT/AREA */
 .item-2 {
     grid-area: main;
 }
 
+/* FOOTER */
 .item-3 {
     grid-area: footer;
 }

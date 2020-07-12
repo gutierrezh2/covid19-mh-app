@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using COVID19MHApi.Models;
 
 // PURPOSE: Contains the AnswerSetItems, which have a list of grouped AnswerItems used to assign the Options field in the QuestionItem entity. (This is so that we don't have repeat code for the AnswerSetItems.)
 
@@ -42,23 +41,4 @@ public static class AnswerSetDatabase {
             new AnswerItem() { Id = 15, Answer = "Yes", Score = 1 }            
         }
     };
-
-    /*List<AnswerItem> AnswerSet2 =  new List<AnswerItem> {
-        new AnswerItem(6, "Not at all", 0),
-        new AnswerItem(7, "A little", 1),
-        new AnswerItem(8, "Somewhat", 2),
-        new AnswerItem(9, "A lot", 3)
-    };
-
-    List<AnswerItem> AnswerSet3 =  new List<AnswerItem> {
-        new AnswerItem(10, "Very well", 0),
-        new AnswerItem(11, "Somewhat well", 1),
-        new AnswerItem(12, "Not very well", 2),
-        new AnswerItem(13, "Not at all", 3)
-    };
-
-    List<AnswerItem> AnswerSet4 =  new List<AnswerItem> {
-        new AnswerItem(14, "No", 0),
-        new AnswerItem(15, "Yes", 1)
-    };*/
 }
